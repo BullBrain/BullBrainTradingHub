@@ -1,29 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bull & Brain Trading Hub</title>
+
 <style>
     body { background-color: #0a0a0a; color: #f0c23e; font-family: Arial, sans-serif; margin:0; padding:0; text-align:center; }
-    
     header {
-        background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
-        padding: 60px 20px;
+        background:#111;
+        padding: 15px 20px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        border-bottom:2px solid #ffd86b;
     }
-    header h1 {
+    .logo {
+        font-size: 22px;
+        font-weight: bold;
+        color:#ffd86b;
+    }
+    nav a {
+        color:#ffd86b;
+        margin:0 12px;
+        text-decoration:none;
+        font-size:16px;
+        font-weight:bold;
+    }
+    nav a:hover {
+        color:#ffffff;
+    }
+    .hero {
+        padding: 60px 20px;
+        background: linear-gradient(to bottom, #1a1a1a, #0a0a0a);
+    }
+    .hero h1 {
         font-size: 42px;
         font-weight: bold;
         color: #ffdd55;
-        margin:0;
     }
     .tagline {
         font-size: 22px;
         margin-top: 10px;
         color: #ffd86b;
     }
-
     .section-title {
         font-size: 26px;
         border-bottom: 2px solid #ffd86b;
@@ -31,7 +51,6 @@
         margin-top: 40px;
         margin-bottom: 20px;
     }
-
     .card-container {
         display: flex;
         justify-content: center;
@@ -39,7 +58,6 @@
         gap: 20px;
         padding: 20px;
     }
-
     .card {
         width: 260px;
         background-color: #111;
@@ -48,12 +66,10 @@
         padding: 20px;
         box-shadow: 0 0 10px rgba(255, 216, 91, 0.3);
     }
-
     .icon {
         font-size: 35px;
         margin-bottom: 10px;
     }
-
     .btn {
         padding: 14px 35px;
         background:#ffd86b;
@@ -64,23 +80,49 @@
         display:inline-block;
         margin: 20px;
     }
-
     footer {
         margin-top: 60px;
         font-size: 12px;
         opacity: 0.7;
         padding-bottom: 15px;
     }
+    form input, form textarea {
+        width: 80%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 8px;
+        border: none;
+    }
+    form button {
+        background:#ffd86b;
+        padding:12px 30px;
+        border:none;
+        font-weight:bold;
+        border-radius:25px;
+        cursor:pointer;
+    }
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1>Bull & Brain Trading Hub</h1>
-    <p class="tagline">Where Logic Meets Profits</p>
+    <div class="logo">
+        <img src="logo.png" alt="Bull & Brain Logo" height="40">
+    </div>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#join">Join</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </header>
 
-<h2 class="section-title">Our Services</h2>
+<div class="hero">
+    <h1>Bull & Brain Trading Hub</h1>
+    <p class="tagline">Trade with Brain, Earn like a Bull</p>
+</div>
+
+<h2 class="section-title" id="services">Our Services</h2>
 <div class="card-container">
     <div class="card">
         <div class="icon">📈</div>
@@ -96,19 +138,26 @@
     </div>
     <div class="card">
         <div class="icon">💳</div>
-        <p>Membership Plans<br>(Coming Soon)</p>
+        <p>Membership Plans (Soon)</p>
     </div>
 </div>
 
-<h2 class="section-title">Join Our Community</h2>
-<a class="btn" href="https://t.me/BullBrainTradingHub" target="_blank">Telegram Channel</a>
+<h2 class="section-title" id="join">Join Our Community</h2>
+<a class="btn" href="https://t.me/BullBrainTradingHub" target="_blank">Join Telegram</a>
 
-<h2 class="section-title">Contact Us</h2>
-<p>Email: bullbraintrader@gmail.com</p>
+<h2 class="section-title" id="contact">Contact Us</h2>
+
+<form action="https://formspree.io/f/mldgbqdn" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="email" name="email" placeholder="Your Email" required><br>
+    <textarea name="message" placeholder="Your Message" rows="4" required></textarea><br>
+    <button type="submit">Send</button>
+</form>
 
 <footer>
-<p>Disclaimer: Trading in stock market involves financial risks. Trade at your own risk.</p>
+<p>Disclaimer: Trading involves financial risks. Trade at your own risk.</p>
 </footer>
 
 </body>
 </html>
+
