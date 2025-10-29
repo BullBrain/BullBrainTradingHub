@@ -18,7 +18,7 @@
       color: white;
       font-family: Arial, sans-serif;
       line-height:1.45;
-      overflow-x:hidden; /* ✅ FIX: prevent left-right scroll */
+      overflow-x:hidden;
     }
 
     header {
@@ -28,206 +28,129 @@
       padding:12px 20px;
       border-bottom:1px solid rgba(255,221,85,0.15);
     }
-    .logo-container {
-      display:flex; align-items:center; gap:8px;
-    }
-    .logo-container img {
-      height:45px;
-    }
+    .logo-container { display:flex; align-items:center; gap:8px; }
+    .logo-container img { height:45px; }
     .logo-container span {
-      font-size:18px;
-      font-weight:bold;
-      color: var(--gold);
+      font-size:18px; font-weight:bold; color: var(--gold);
     }
 
-    nav ul {
-      list-style:none;
-      display:flex; align-items:center; gap:20px;
-    }
+    nav ul { display:flex; gap:20px; align-items:center; list-style:none; }
     nav ul li a {
-      text-decoration:none;
-      color:#fff;
-      font-size:15px;
-      font-weight:600;
-      transition:0.3s;
+      text-decoration:none; color:#fff;
+      font-size:15px; font-weight:600; transition:0.3s;
     }
-    nav ul li a:hover {
-      color: var(--gold);
-    }
+    nav ul li a:hover { color: var(--gold); }
 
-    /* ✅ HAMBURGER MENU (MOBILE ONLY) */
     .hamburger {
-      display:none;
-      font-size:28px;
-      cursor:pointer;
-      color:var(--gold);
-      background:none;
-      border:none;
+      display:none; font-size:28px;
+      cursor:pointer; color:var(--gold);
+      background:none; border:none;
     }
-    @media (max-width:600px){
+    @media(max-width:600px){
       nav ul { display:none; }
-
-      .hamburger { display:block; }
+      .hamburger{ display:block; }
 
       #mobileMenu {
-        display:none;
-        position:absolute;
-        right:20px;
-        top:60px;
-        background:#000;
+        display:none; position:absolute; right:20px; top:60px;
+        background:#000; border-radius:10px;
         border:1px solid rgba(255,221,85,0.25);
-        border-radius:10px;
-        padding:10px 0;
-        width:180px;
-        text-align:right;
+        width:180px; text-align:right;
       }
       #mobileMenu a {
-        display:block;
-        padding:10px 14px;
-        font-size:16px;
-        font-weight:bold;
-        color:white;
-        text-decoration:none;
+        display:block; padding:10px;
+        font-weight:bold; font-size:16px;
+        text-decoration:none; color:#fff;
       }
       #mobileMenu a:hover {
-        background: rgba(255,221,85,0.08);
+        background:rgba(255,221,85,0.08);
         color:var(--gold);
       }
     }
 
-    /* Hero */
-    .hero {
-      text-align:center;
-      padding:70px 20px 40px;
-      position: relative;
-    }
-    .hero img.main-logo {
-      width:180px;
-      margin:auto;
-      display:block;
-      filter: drop-shadow(0 0 30px rgba(255,221,85,0.3));
-    }
+    /* HERO */
+    .hero { text-align:center; padding:70px 20px 40px; position:relative; }
+    .hero img.main-logo { width:180px; margin:auto; display:block; }
     .hero img.bg-logo {
-      width:550px;
-      opacity:0.06;
-      position:absolute;
-      left:50%; top:50%;
-      transform: translate(-50%, -55%);
+      width:550px; opacity:0.06;
+      position:absolute; left:50%; top:50%;
+      transform:translate(-50%, -55%);
     }
-    .hero h1 {
-      font-size:38px;
-      color: var(--gold);
-      margin-top:20px;
-      text-shadow:0 0 18px rgba(255,221,85,0.4);
-    }
+    .hero h1 { font-size:38px; color:var(--gold); margin-top:20px; }
 
-    /* ✅ LIVE TICKER FIX */
-    .ticker-wrap {
-      background: #111;
-      padding: 8px 0;
-      margin: 0 20px;
-      overflow-x:auto;
-      white-space:nowrap;
-      -webkit-overflow-scrolling:touch;
+    /* ✅ LIVE MARKET BOXES */
+    .market-box-container {
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin:20px 12px;
     }
-    .ticker-title {
-      font-size:14px;
-      color: var(--gold);
-      margin-left:20px;
-      display:inline-block;
+    .market-box {
+      background:#111;
+      padding:10px;
+      width:120px;
+      border-radius:8px;
+      border:1px solid rgba(255,221,85,0.25);
+      text-align:center;
+      font-size:13px;
     }
+    .market-title { color:var(--gold); font-weight:bold; margin-bottom:3px; }
+    .market-price.up { color:#00ff7f; }
+    .market-price.down { color:#ff4d4d; }
 
     .section-title {
       text-align:center;
       font-size:26px;
-      color: var(--gold);
+      color:var(--gold);
       margin:60px 0 30px;
     }
 
     .services {
-      display:flex; justify-content:center; flex-wrap:wrap; gap:22px; padding:0 10px;
-    }
-    .service-card {
-      width:220px;
-      background: var(--panel);
-      padding:18px;
-      border-radius:var(--radius);
-      border:1px solid rgba(255,221,85,0.18);
-      text-align:center;
-      box-shadow:0 0 15px rgba(255,221,85,0.10);
-    }
-    .service-card p {
-      margin-top:12px;
-      font-size:16px;
-      color: var(--text);
-    }
-
-    /* ✅ MEMBERSHIP BULLET DOTS FIX */
-    .plans-container {
-      width:90%;
-      margin:auto;
-      display:flex; justify-content:center; flex-wrap:wrap; gap:20px;
-      padding:0 10px;
-    }
-    .plan ul {
-      list-style: disc; /* ✅ dots restored */
-      padding-left:18px;
-    }
-
-    .plan {
-      width:260px;
-      background: rgba(255,221,85,0.04);
-      border:2px solid rgba(255,221,85,0.25);
-      border-radius:var(--radius);
-      padding:20px;
-      color:#fff;
-    }
-    .plan h3 {
-      color: var(--gold);
-      font-size:20px;
-      margin-bottom:8px;
-    }
-
-    .plan .btn {
-      display:block;
-      margin-top:12px;
-      padding:10px 14px;
-      background: var(--gold);
-      color:#000;
-      text-decoration:none;
-      font-weight:bold;
-      text-align:center;
-      border-radius:var(--radius);
-    }
-
-    /* Join */
-    .social-icons {
       display:flex;
       justify-content:center;
-      gap:25px;
-      margin-top:20px;
+      flex-wrap:wrap;
+      gap:22px;
+      padding:0 10px;
     }
-    .social-icons img {
-      width:45px;
-      transition:0.3s;
+    .service-card {
+      width:220px; background: var(--panel);
+      padding:18px; border-radius:var(--radius);
+      border:1px solid rgba(255,221,85,0.18);
+      text-align:center;
     }
-    .social-icons img:hover {
-      transform: scale(1.15);
-      filter: drop-shadow(0 0 20px rgba(255,221,85,0.4));
+    .service-card p { font-size:16px; color: var(--text); margin-top:12px; }
+
+    .plans-container {
+      width:90%; margin:auto;
+      display:flex; justify-content:center;
+      flex-wrap:wrap; gap:20px;
+    }
+    .plan { width:260px; padding:20px;
+      background:rgba(255,221,85,0.05);
+      border-radius:var(--radius);
+      border:2px solid rgba(255,221,85,0.25);
+    }
+    .plan ul { list-style:disc; padding-left:18px; }
+    .plan h3 { color:var(--gold); font-size:20px; }
+
+    .btn {
+      display:block; background:var(--gold);
+      color:#000; text-align:center;
+      padding:10px; text-decoration:none;
+      margin-top:12px; border-radius:var(--radius);
+      font-weight:bold;
     }
 
-    footer {
-      text-align:center;
-      padding:20px 10px;
-      background: #000;
-      color: rgba(255,255,255,0.6);
-      font-size:14px;
-      border-top:1px solid rgba(255,255,255,0.08);
-      margin-top:60px;
+    .social-icons {
+      display:flex; justify-content:center;
+      gap:25px; margin-top:20px;
     }
-    footer a {
-      color: var(--gold);
-      text-decoration: none;
+    .social-icons img { width:45px; }
+
+    footer {
+      text-align:center; padding:20px 10px;
+      background:#000; color:rgba(255,255,255,0.6);
+      margin-top:60px;
     }
   </style>
 </head>
@@ -235,14 +158,10 @@
 
 <header>
   <div class="logo-container">
-    <img src="logo.png" alt="Logo">
+    <img src="logo.png">
     <span>Bull & Brain</span>
   </div>
-
-  <!-- ✅ Hamburger Button -->
   <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-  <!-- ✅ Mobile Dropdown -->
   <div id="mobileMenu">
     <a href="#services">SERVICES</a>
     <a href="#membership">MEMBERSHIP</a>
@@ -250,8 +169,6 @@
     <a href="#contact">CONTACT</a>
     <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
   </div>
-
-  <!-- ✅ Keep desktop same -->
   <nav>
     <ul>
       <li><a href="#services">Services</a></li>
@@ -264,28 +181,24 @@
 </header>
 
 <section class="hero">
-  <img src="logo.png" alt="Big Logo" class="main-logo">
-  <img src="logo.png" alt="" class="bg-logo" aria-hidden="true">
+  <img src="logo.png" class="main-logo">
+  <img src="logo.png" class="bg-logo">
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- ✅ Fixed Live Ticker -->
-<div class="ticker-wrap">
-  <div class="ticker-title">Live Market:</div>
-  <div class="tradingview-widget-container" style="display:inline-block;">
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-    {
-      "symbols": [
-        { "proName": "NSE:NIFTY", "title": "Nifty 50" },
-        { "proName": "NSE:BANKNIFTY", "title": "Bank Nifty" },
-        { "proName": "BSE:SENSEX", "title": "Sensex" }
-      ],
-      "colorTheme": "dark",
-      "isTransparent": true,
-      "displayMode": "adaptive",
-      "locale": "en"
-    }
-    </script>
+<!-- ✅ LIVE MARKET BOXES -->
+<div class="market-box-container">
+  <div class="market-box">
+    <div class="market-title">NIFTY 50</div>
+    <div id="nifty" class="market-price">--</div>
+  </div>
+  <div class="market-box">
+    <div class="market-title">BANKNIFTY</div>
+    <div id="banknifty" class="market-price">--</div>
+  </div>
+  <div class="market-box">
+    <div class="market-title">SENSEX</div>
+    <div id="sensex" class="market-price">--</div>
   </div>
 </div>
 
@@ -305,54 +218,76 @@
       <li>Free Telegram Group</li>
       <li>Market Education</li>
       <li>Community Access</li>
-      <li>Time to Time Support</li>
+      <li>Support</li>
     </ul>
-    <a class="btn" target="_blank" href="https://t.me/BullBrainTradingHub">Join Free Now</a>
+    <a class="btn" href="https://t.me/BullBrainTradingHub" target="_blank">Join Free Now</a>
   </div>
   <div class="plan">
     <h3>Standard Plan (Coming Soon)</h3>
     <ul>
       <li>Premium Group Access</li>
-      <li>Proper Entry, Exit & Target</li>
-      <li>Majority Community Group Access</li>
-      <li>Daily Calls Recommendations</li>
+      <li>Entry, Exit & Target</li>
+      <li>Community Group</li>
+      <li>Daily Calls</li>
       <li>BTST</li>
     </ul>
   </div>
   <div class="plan">
     <h3>Premium Plan (Coming Soon)</h3>
     <ul>
-      <li>Private Support & Coaching</li>
-      <li>All Premium Groups Access</li>
-      <li>Stocks Recommendations</li>
-      <li>Daily Calls Recommendations</li>
-      <li>Proper Entry, Exit & Target</li>
+      <li>Private Coaching</li>
+      <li>All Premium Groups</li>
+      <li>Stock Recommendations</li>
+      <li>Daily Calls</li>
+      <li>Entry, Exit & Target</li>
       <li>BTST</li>
     </ul>
   </div>
 </div>
 
 <h2 class="section-title" id="join">Join Our Community</h2>
-<p style="text-align:center;">Follow us on Social Media</p>
 <div class="social-icons">
   <a href="https://www.instagram.com/bull.braintrader?igsh=OTA1Z2poOGVlNzMx" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
   </a>
 </div>
 
 <footer>
-  <p>© <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved</p>
-  <p>Trading involves financial risk. Trade wisely.</p>
+  © <span id="year"></span> Bull & Brain Trading Hub
 </footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ✅ Mobile Menu Toggle
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-  }
+<!-- ✅ LIVE MARKET SCRIPT -->
+<script>
+function updateMarket() {
+  fetch("https://api.allorigins.win/get?url=https://query2.finance.yahoo.com/v8/finance/chart/%5ENSEI")
+    .then(r=>r.json()).then(data=>{
+      let price = data.contents.match(/"regularMarketPrice":([0-9.]+)/);
+      if(price) document.getElementById("sensex").textContent = price[1];
+    });
+
+  fetch("https://api.allorigins.win/get?url=https://query2.finance.yahoo.com/v8/finance/chart/%5ENSEI")
+    .then(r=>r.json()).then(data=>{
+      let price = data.contents.match(/"regularMarketPrice":([0-9.]+)/);
+      if(price) document.getElementById("nifty").textContent = price[1];
+    });
+
+  fetch("https://api.allorigins.win/get?url=https://query2.finance.yahoo.com/v8/finance/chart/%5ENSEBANK")
+    .then(r=>r.json()).then(data=>{
+      let price = data.contents.match(/"regularMarketPrice":([0-9.]+)/);
+      if(price) document.getElementById("banknifty").textContent = price[1];
+    });
+}
+
+setInterval(updateMarket, 5000);
+updateMarket();
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function toggleMenu(){
+  const menu = document.getElementById('mobileMenu');
+  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
 </script>
 
 </body>
