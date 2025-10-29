@@ -5,6 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bull & Brain Trading Hub</title>
     <style>
+      /* ✅ Fix menu showing behind logo */
+#mobileMenu {
+  z-index: 9999;
+}
+
+/* ✅ Ensure hamburger stays on top */
+.hamburger {
+  z-index: 10000;
+}
+
+/* ✅ Fix main logo — keep it steady when scrolling */
+.hero {
+  position: relative;
+  overflow: visible;
+}
+
+.hero img.main-logo {
+  position: sticky;
+  top: 80px; /* adjust this if needed */
+  z-index: 5;
+}
+
+/* ✅ Also ensure hero background logo does not push width */
+.hero img.bg-logo {
+  max-width: 100%;
+}
+
     /* ✅ 1. Move hamburger (menu button) fully to right on mobile */
 @media(max-width:600px){
   .hamburger {
