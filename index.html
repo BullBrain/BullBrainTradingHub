@@ -4,8 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bull & Brain Trading Hub</title>
-  <style>
     <style>
+    /* ✅ 1. Move hamburger (menu button) fully to right on mobile */
+@media(max-width:600px){
+  .hamburger {
+    margin-left:auto;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+}
+
+/* ✅ 2. Background logo visibility increased slightly */
+.hero img.bg-logo {
+  opacity: 0.12; /* previously 0.06 */
+}
+
+/* ✅ 3. Main logo stays fixed in hero section during scroll */
+.hero img.main-logo {
+  position: relative;
+  z-index: 5;
+  pointer-events: none;
+}
+
 /* ✅ Already in your code */
 body {
   background: var(--bg);
