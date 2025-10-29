@@ -17,122 +17,217 @@
       background: var(--bg);
       color: white;
       font-family: Arial, sans-serif;
-      overflow-x: hidden;
+      line-height:1.45;
+      overflow-x:hidden; /* ✅ FIX: prevent left-right scroll */
     }
 
     header {
       position: sticky; top:0; z-index:10;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.8);
       display:flex; align-items:center; justify-content:space-between;
       padding:12px 20px;
       border-bottom:1px solid rgba(255,221,85,0.15);
     }
-    .logo-container { display:flex; align-items:center; gap:8px; }
-    .logo-container img { height:45px; }
-    .logo-container span { color:var(--gold); font-size:18px; font-weight:bold; }
+    .logo-container {
+      display:flex; align-items:center; gap:8px;
+    }
+    .logo-container img {
+      height:45px;
+    }
+    .logo-container span {
+      font-size:18px;
+      font-weight:bold;
+      color: var(--gold);
+    }
 
     nav ul {
-      display:flex; gap:18px; align-items:center;
       list-style:none;
+      display:flex; align-items:center; gap:20px;
     }
     nav ul li a {
-      font-size:15px; font-weight:600;
-      text-decoration:none; color:#fff;
+      text-decoration:none;
+      color:#fff;
+      font-size:15px;
+      font-weight:600;
       transition:0.3s;
     }
-    nav ul li a:hover { color: var(--gold); }
-
-    /* Hamburger (mobile only) */
-    .hamburger {
-      display:none; font-size:28px; color:var(--gold);
-      background:none; border:none; cursor:pointer;
+    nav ul li a:hover {
+      color: var(--gold);
     }
-    @media(max-width:600px){
+
+    /* ✅ HAMBURGER MENU (MOBILE ONLY) */
+    .hamburger {
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+      color:var(--gold);
+      background:none;
+      border:none;
+    }
+    @media (max-width:600px){
       nav ul { display:none; }
+
       .hamburger { display:block; }
 
       #mobileMenu {
-        display:none; position:absolute; right:20px; top:62px;
-        background:#000; border-radius:12px;
+        display:none;
+        position:absolute;
+        right:20px;
+        top:60px;
+        background:#000;
         border:1px solid rgba(255,221,85,0.25);
-        width:170px; text-align:right;
+        border-radius:10px;
+        padding:10px 0;
+        width:180px;
+        text-align:right;
       }
       #mobileMenu a {
-        color:#fff; display:block; padding:12px 14px;
-        font-size:16px; font-weight:bold;
+        display:block;
+        padding:10px 14px;
+        font-size:16px;
+        font-weight:bold;
+        color:white;
         text-decoration:none;
       }
       #mobileMenu a:hover {
-        background:rgba(255,221,85,0.08);
+        background: rgba(255,221,85,0.08);
         color:var(--gold);
       }
     }
 
+    /* Hero */
     .hero {
-      text-align:center; padding:70px 20px 40px; position:relative;
+      text-align:center;
+      padding:70px 20px 40px;
+      position: relative;
     }
-    .hero img.main-logo { width:180px; margin:auto; display:block; }
+    .hero img.main-logo {
+      width:180px;
+      margin:auto;
+      display:block;
+      filter: drop-shadow(0 0 30px rgba(255,221,85,0.3));
+    }
     .hero img.bg-logo {
-      width:550px; opacity:0.06; position:absolute;
-      left:50%; top:50%; transform:translate(-50%, -55%);
+      width:550px;
+      opacity:0.06;
+      position:absolute;
+      left:50%; top:50%;
+      transform: translate(-50%, -55%);
     }
-    .hero h1 { font-size:38px; color:var(--gold); margin-top:20px; }
+    .hero h1 {
+      font-size:38px;
+      color: var(--gold);
+      margin-top:20px;
+      text-shadow:0 0 18px rgba(255,221,85,0.4);
+    }
 
-    /* LIVE TICKER FIX */
+    /* ✅ LIVE TICKER FIX */
     .ticker-wrap {
-      padding:6px 0;
-      width:100%;
-      margin-top:8px;
-      background:#111;
+      background: #111;
+      padding: 8px 0;
+      margin: 0 20px;
+      overflow-x:auto;
+      white-space:nowrap;
+      -webkit-overflow-scrolling:touch;
+    }
+    .ticker-title {
+      font-size:14px;
+      color: var(--gold);
+      margin-left:20px;
+      display:inline-block;
     }
 
     .section-title {
-      font-size:26px; color:var(--gold);
-      text-align:center; margin:60px 0 25px;
+      text-align:center;
+      font-size:26px;
+      color: var(--gold);
+      margin:60px 0 30px;
     }
 
     .services {
-      display:flex; justify-content:center;
-      gap:20px; flex-wrap:wrap;
+      display:flex; justify-content:center; flex-wrap:wrap; gap:22px; padding:0 10px;
     }
     .service-card {
-      width:220px; background:var(--panel); text-align:center;
-      border-radius:var(--radius); padding:18px;
+      width:220px;
+      background: var(--panel);
+      padding:18px;
+      border-radius:var(--radius);
       border:1px solid rgba(255,221,85,0.18);
+      text-align:center;
+      box-shadow:0 0 15px rgba(255,221,85,0.10);
     }
-    .service-card p { font-size:16px; color:var(--text); margin-top:12px; }
+    .service-card p {
+      margin-top:12px;
+      font-size:16px;
+      color: var(--text);
+    }
 
-    /* BULLET DOT RESTORED ✅ */
+    /* ✅ MEMBERSHIP BULLET DOTS FIX */
     .plans-container {
-      width:90%; margin:auto;
-      display:flex; flex-wrap:wrap; gap:18px; justify-content:center;
+      width:90%;
+      margin:auto;
+      display:flex; justify-content:center; flex-wrap:wrap; gap:20px;
+      padding:0 10px;
     }
+    .plan ul {
+      list-style: disc; /* ✅ dots restored */
+      padding-left:18px;
+    }
+
     .plan {
-      width:260px; background:rgba(255,221,85,0.05);
-      padding:20px; border-radius:var(--radius);
+      width:260px;
+      background: rgba(255,221,85,0.04);
       border:2px solid rgba(255,221,85,0.25);
+      border-radius:var(--radius);
+      padding:20px;
+      color:#fff;
     }
-    .plan ul { list-style:disc; padding-left:18px; }
-    .plan h3 { color:var(--gold); font-size:20px; }
+    .plan h3 {
+      color: var(--gold);
+      font-size:20px;
+      margin-bottom:8px;
+    }
 
-    .btn {
-      display:block; background:var(--gold); color:#000;
-      padding:10px 12px; border-radius:var(--radius);
-      text-align:center; font-weight:bold;
-      margin-top:10px;
+    .plan .btn {
+      display:block;
+      margin-top:12px;
+      padding:10px 14px;
+      background: var(--gold);
+      color:#000;
       text-decoration:none;
+      font-weight:bold;
+      text-align:center;
+      border-radius:var(--radius);
     }
 
+    /* Join */
     .social-icons {
-      display:flex; justify-content:center;
-      gap:25px; margin-top:20px;
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      margin-top:20px;
     }
-    .social-icons img { width:45px; transition:0.3s; }
+    .social-icons img {
+      width:45px;
+      transition:0.3s;
+    }
+    .social-icons img:hover {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 20px rgba(255,221,85,0.4));
+    }
 
     footer {
-      text-align:center; padding:20px 10px;
-      background:#000; color:rgba(255,255,255,0.6);
+      text-align:center;
+      padding:20px 10px;
+      background: #000;
+      color: rgba(255,255,255,0.6);
+      font-size:14px;
+      border-top:1px solid rgba(255,255,255,0.08);
       margin-top:60px;
+    }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
     }
   </style>
 </head>
@@ -140,5 +235,126 @@
 
 <header>
   <div class="logo-container">
-    <img src="logo.png">
-    <span>Bull & Brain</s
+    <img src="logo.png" alt="Logo">
+    <span>Bull & Brain</span>
+  </div>
+
+  <!-- ✅ Hamburger Button -->
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+  <!-- ✅ Mobile Dropdown -->
+  <div id="mobileMenu">
+    <a href="#services">SERVICES</a>
+    <a href="#membership">MEMBERSHIP</a>
+    <a href="#join">JOIN</a>
+    <a href="#contact">CONTACT</a>
+    <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
+  </div>
+
+  <!-- ✅ Keep desktop same -->
+  <nav>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#join">Join</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a target="_blank" href="https://t.me/BullBrainTradingHub">Telegram</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="logo.png" alt="Big Logo" class="main-logo">
+  <img src="logo.png" alt="" class="bg-logo" aria-hidden="true">
+  <h1>Where Logic Meets Profits</h1>
+</section>
+
+<!-- ✅ Fixed Live Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker-title">Live Market:</div>
+  <div class="tradingview-widget-container" style="display:inline-block;">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        { "proName": "NSE:NIFTY", "title": "Nifty 50" },
+        { "proName": "NSE:BANKNIFTY", "title": "Bank Nifty" },
+        { "proName": "BSE:SENSEX", "title": "Sensex" }
+      ],
+      "colorTheme": "dark",
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "locale": "en"
+    }
+    </script>
+  </div>
+</div>
+
+<h2 class="section-title" id="services">Our Services</h2>
+<div class="services">
+  <div class="service-card"><p>📈 Live Market Calls</p></div>
+  <div class="service-card"><p>📊 Market Analysis</p></div>
+  <div class="service-card"><p>🤝 Trading Support</p></div>
+  <div class="service-card"><p>👥 Community Access</p></div>
+</div>
+
+<h2 class="section-title" id="membership">Membership Plans</h2>
+<div class="plans-container">
+  <div class="plan">
+    <h3>Basic Plan</h3>
+    <ul>
+      <li>Free Telegram Group</li>
+      <li>Market Education</li>
+      <li>Community Access</li>
+      <li>Time to Time Support</li>
+    </ul>
+    <a class="btn" target="_blank" href="https://t.me/BullBrainTradingHub">Join Free Now</a>
+  </div>
+  <div class="plan">
+    <h3>Standard Plan (Coming Soon)</h3>
+    <ul>
+      <li>Premium Group Access</li>
+      <li>Proper Entry, Exit & Target</li>
+      <li>Majority Community Group Access</li>
+      <li>Daily Calls Recommendations</li>
+      <li>BTST</li>
+    </ul>
+  </div>
+  <div class="plan">
+    <h3>Premium Plan (Coming Soon)</h3>
+    <ul>
+      <li>Private Support & Coaching</li>
+      <li>All Premium Groups Access</li>
+      <li>Stocks Recommendations</li>
+      <li>Daily Calls Recommendations</li>
+      <li>Proper Entry, Exit & Target</li>
+      <li>BTST</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="section-title" id="join">Join Our Community</h2>
+<p style="text-align:center;">Follow us on Social Media</p>
+<div class="social-icons">
+  <a href="https://www.instagram.com/bull.braintrader?igsh=OTA1Z2poOGVlNzMx" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+  </a>
+</div>
+
+<footer>
+  <p>© <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved</p>
+  <p>Trading involves financial risk. Trade wisely.</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ✅ Mobile Menu Toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
+</script>
+
+</body>
+</html>
+
