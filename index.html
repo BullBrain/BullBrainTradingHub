@@ -1,183 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bull Brain Trader</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bull & Brain Trading Hub</title>
+  <meta name="description" content="Bull & Brain Trading Hub — Live market calls, market analysis reports and community support for traders. Trade responsibly." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Basic styles (single-file for easy paste) -->
+  <style>
+    :root{
+      --bg:#0a0a0a;
+      --panel:#0f0f0f;
+      --gold:#ffdd55;
+      --muted: #d9b85a;
+      --glass: rgba(255,221,85,0.05);
+      --radius:14px;
+      --maxwidth:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, Arial, sans-serif;
+      background: linear-gradient(180deg,var(--bg) 0%, #050505 120%);
+      color: #fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0a0a0a;
-            color: white;
-        }
+    /* Container */
+    .container{max-width:var(--maxwidth);margin:0 auto;padding:28px 20px;}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 50px;
-            background: rgba(0,0,0,0.8);
-        }
+    /* Header / Nav */
+    header{
+      position:sticky;top:0;z-index:40;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.25));
+      border-bottom:1px solid rgba(255,221,85,0.06);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:var(--maxwidth);margin:0 auto;padding:12px 20px;}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--gold)}
+    .logo-mark{
+      width:46px;height:46px;border-radius:10px;
+      background:linear-gradient(135deg, rgba(255,221,85,0.14), rgba(255,221,85,0.06));
+      display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.6);
+      border:1px solid rgba(255,221,85,0.14);
+    }
+    .logo-mark svg{width:28px;height:28px;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.6))}
+    .brand h1{font-size:18px;margin:0;letter-spacing:0.6px;font-weight:700;color:var(--gold)}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
 
-        h1.logo {
-            font-size: 26px;
-            font-weight: bold;
-            margin: 0;
-            color: #00FF66;
-        }
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a{color:#fff;text-decoration:none;font-weight:600;font-size:14px;opacity:0.9;padding:8px 10px;border-radius:8px;transition:all .18s ease}
+    nav a:hover{color:var(--gold);transform:translateY(-2px) scale(1.01)}
+    .cta{background:linear-gradient(90deg,var(--gold), #ffd86b); color:#000;padding:10px 16px;border-radius:12px;font-weight:700;box-shadow:0 8px 28px rgba(255,221,85,0.07)}
+    .hamburger{display:none;background:transparent;border:0;color:var(--gold);font-size:20px}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 28px;
-            margin: 0;
-        }
+    /* Hero */
+    .hero{
+      padding:48px 0 36px;
+      display:flex;align-items:center;gap:36px;
+      justify-content:space-between;
+    }
+    .hero-left{flex:1;min-width:240px}
+    .hero h2{font-size:36px;margin:0 0 12px;color:var(--gold);text-shadow:0 6px 24px rgba(255,221,85,0.06)}
+    .hero p{margin:0 0 18px;color:#e9d69a;opacity:0.95;font-size:16px;max-width:680px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      display:inline-block;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;border:0;cursor:pointer;
+    }
+    .btn-primary{background:linear-gradient(90deg,var(--gold), #ffd86b);color:#000;box-shadow:0 14px 40px rgba(255,221,85,0.08)}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 17px;
-            transition: 0.3s;
-        }
+    /* Hero visual (small chart mock) */
+    .hero-right{width:380px;max-width:42%;min-width:220px}
+    .card-chart{
+      background:linear-gradient(180deg, rgba(255,221,85,0.03), rgba(0,0,0,0.14));
+      border-radius:16px;padding:18px;border:1px solid rgba(255,221,85,0.06);
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    }
+    .chart-spark{height:140px;background:linear-gradient(180deg,#071018, #081018);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.06);font-weight:700;letter-spacing:2px}
+    .muted{color:var(--muted)}
 
-        nav ul li a:hover {
-            color: #00FF66;
-        }
+    /* Sections */
+    section{padding:36px 0}
+    .section-title{display:inline-block;color:var(--gold);font-size:20px;border-bottom:2px solid rgba(255,221,85,0.08);padding-bottom:8px;margin-bottom:18px}
 
-        /* Hero Section */
-        .hero {
-            height: 70vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('logo.png') center/400px no-repeat;
-            opacity: 0.95;
-        }
+    /* Card grid */
+    .card-grid{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;padding:12px 6px}
+    .service-card{
+      width:260px;background:var(--panel);padding:18px;border-radius:14px;border:1px solid rgba(255,221,85,0.06);
+      box-shadow:0 8px 28px rgba(0,0,0,0.6);text-align:center;
+    }
+    .service-card .icon{font-size:30px;margin-bottom:10px}
+    .service-card p{margin:0;color:#ffd86b;font-weight:600}
 
-        .hero h2 {
-            font-size: 48px;
-            text-align: center;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px #00FF66;
-        }
+    /* Pricing / membership */
+    .plans{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+    .plan{
+      width:280px;background:linear-gradient(180deg, rgba(255,221,85,0.02), rgba(255,221,85,0.01));
+      border-radius:14px;padding:18px;border:1px solid rgba(255,221,85,0.06);
+    }
+    .plan h3{margin:0 0 10px;color:var(--gold)}
+    .plan .price{font-size:26px;font-weight:800;margin:8px 0;color:#fff}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,221,85,0.1);color:var(--gold);font-weight:700;font-size:12px}
 
-        /* Section Headings */
-        h2.section-title {
-            font-size: 35px;
-            text-align: center;
-            margin-top: 90px;
-            margin-bottom: 35px;
-            color: #00FF66;
-        }
+    /* Join & Contact */
+    .contact{display:flex;gap:20px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px}
+    .contact .email{font-weight:700;color:var(--gold)}
+    .small{font-size:13px;color:#c9b37a}
 
-        /* Services */
-        .services {
-            text-align: center;
-            font-size: 18px;
-            padding: 10px 40px;
-        }
+    /* Footer */
+    footer{padding:26px 0;border-top:1px solid rgba(255,255,255,0.03);margin-top:30px;text-align:center;color:#c9b37a}
+    footer a{color:var(--muted);text-decoration:none}
 
-        /* Membership Plans */
-        .plans-container {
-            width: 80%;
-            margin: auto;
-            margin-bottom: 100px;
-        }
+    /* Floating social button (WhatsApp) */
+    .floating {
+      position:fixed;right:18px;bottom:18px;z-index:60;
+    }
+    .floating a{
+      display:block;width:56px;height:56px;border-radius:999px;background:linear-gradient(180deg,#25D366,#1ebe57);box-shadow:0 10px 30px rgba(37,211,102,0.14);
+      display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-weight:700;border:0;
+    }
 
-        details {
-            background: #111;
-            border: 2px solid #00FF66;
-            border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{flex-direction:column;align-items:flex-start}
+      .hero-right{max-width:100%;width:100%}
+      nav ul{display:none}
+      .hamburger{display:inline-block}
+    }
+    @media (max-width:520px){
+      .brand h1{font-size:15px}
+      .hero h2{font-size:26px}
+      .card-grid{gap:12px}
+      .service-card{width:100%;max-width:340px}
+      .plan{width:100%;max-width:420px}
+    }
 
-        summary {
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            color: #00FF66;
-        }
+    /* Small animations */
+    .fade-up{opacity:0;transform:translateY(8px);animation:fadeUp .6s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
 
-        .coming-soon {
-            font-size: 16px;
-            margin-top: 10px;
-            color: #ccc;
-        }
-
-        footer {
-            padding: 25px;
-            text-align: center;
-            background: #000;
-            border-top: 1px solid #222;
-        }
-
-        footer a {
-            color: #00FF66;
-            text-decoration: none;
-        }
-    </style>
+  </style>
 </head>
 <body>
+  <header>
+    <div class="nav-inner container">
+      <a class="brand" href="#">
+        <span class="logo-mark" aria-hidden="true">
+          <!-- small bull icon (inline SVG) -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 10c0 0 2-5 8-5 6 0 8 5 8 5s2 5-3 7c-4 2-3 2-5 2s-1 0-5-2C1 15 3 10 3 10z" fill="#ffdd55"/>
+            <path d="M12 2v4" stroke="#0a0a0a" stroke-width="0.5" opacity="0.2"/>
+          </svg>
+        </span>
+        <div>
+          <h1>Bull & Brain</h1>
+          <p>Trading Hub</p>
+        </div>
+      </a>
 
-    <!-- Header -->
-    <header>
-        <h1 class="logo">Bull Brain Trader</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Services</a></li>
-                <li><a href="#membership">Membership</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#join">Join</a></li>
-                <li><a href="#privacy">Privacy</a></li>
-            </ul>
-        </nav>
-    </header>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#membership">Membership</a></li>
+          <li><a href="#join">Join</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="cta" href="https://t.me/BullBrainTradingHub" target="_blank" rel="noopener">Telegram</a></li>
+        </ul>
 
-    <!-- Hero -->
-    <section class="hero">
-        <h2>Rule The Market Smartly</h2>
+        <!-- hamburger for mobile -->
+        <button class="hamburger" id="hambBtn" aria-expanded="false" aria-label="Open menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-left fade-up" style="animation-delay:.06s">
+        <h2 id="hero-heading">Where Logic Meets Profits</h2>
+        <p class="muted">Live market calls, in-depth market analysis and a supportive trading community — designed for disciplined traders.</p>
+
+        <div class="hero-actions" role="group" aria-label="Primary actions">
+          <a class="btn btn-primary" href="https://t.me/BullBrainTradingHub" target="_blank" rel="noopener">Join Telegram</a>
+          <a class="btn btn-ghost" href="#membership">See Memberships</a>
+        </div>
+
+        <p class="small" style="margin-top:14px">Disclaimer: Trading involves risk. Past performance is not indicative of future results.</p>
+      </div>
+
+      <div class="hero-right fade-up" style="animation-delay:.12s">
+        <div class="card-chart" role="img" aria-label="Sample market preview">
+          <div class="chart-spark">LIVE PREVIEW (Mock)</div>
+        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <h2 class="section-title">OUR SERVICES</h2>
-    <div class="services">
-        <p>We provide Trades, Market Education, and Professional Investment Guidance for Indian Stock Market enthusiasts.</p>
+    <!-- Services -->
+    <section id="services" aria-labelledby="services-title">
+      <h2 id="services-title" class="section-title">Our Services</h2>
+      <div class="card-grid" role="list">
+        <div class="service-card fade-up" style="animation-delay:.06s" role="listitem">
+          <div class="icon">📈</div>
+          <p>Live Market Calls</p>
+        </div>
+        <div class="service-card fade-up" style="animation-delay:.10s" role="listitem">
+          <div class="icon">📊</div>
+          <p>Market Analysis Reports</p>
+        </div>
+        <div class="service-card fade-up" style="animation-delay:.14s" role="listitem">
+          <div class="icon">🤝</div>
+          <p>Community & Support</p>
+        </div>
+        <div class="service-card fade-up" style="animation-delay:.18s" role="listitem">
+          <div class="icon">💳</div>
+          <p>Membership Plans (Coming Soon)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Membership / Pricing -->
+    <section id="membership" aria-labelledby="membership-title">
+      <h2 id="membership-title" class="section-title">Membership Plans</h2>
+      <div class="plans" role="list">
+        <article class="plan fade-up" style="animation-delay:.06s" role="listitem" aria-label="Basic plan">
+          <div class="badge">Basic</div>
+          <h3>Beginner</h3>
+          <div class="price">—</div>
+          <p class="small">Market education, community access. Launching soon.</p>
+        </article>
+
+        <article class="plan fade-up" style="animation-delay:.10s" role="listitem" aria-label="Standard plan">
+          <div class="badge">Standard</div>
+          <h3>Trader</h3>
+          <div class="price">—</div>
+          <p class="small">Daily calls, reports, and support. Coming soon.</p>
+        </article>
+
+        <article class="plan fade-up" style="animation-delay:.14s" role="listitem" aria-label="Premium plan">
+          <div class="badge">Premium</div>
+          <h3>Pro</h3>
+          <div class="price">—</div>
+          <p class="small">Priority signals, private coaching. Coming soon.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Join / CTA -->
+    <section id="join" aria-labelledby="join-title">
+      <h2 id="join-title" class="section-title">Join Our Community</h2>
+      <p class="muted">Get real-time updates and community support.</p>
+      <div class="contact" aria-hidden="false" id="contact">
+        <a class="btn btn-primary" href="https://t.me/BullBrainTradingHub" target="_blank" rel="noopener">Join on Telegram</a>
+        <!-- WhatsApp: replace PHONE_NUMBER below with your full phone (country code + number) -->
+        <!-- Example: https://wa.me/919999999999 -->
+        <a class="btn btn-ghost" href="https://wa.me/919999999999" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Contact</h2>
+      <p class="email">Email: <a href="mailto:bullbraintrader@gmail.com">bullbraintrader@gmail.com</a></p>
+      <p class="small">You can replace the email above with your official contact. For WhatsApp, replace the number in the Chat link.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p style="margin:6px 0">© <span id="year"></span> Bull &amp; Brain Trading Hub — All rights reserved.</p>
+      <p class="small">Disclaimer: Trading in the stock market involves financial risk. Trade responsibly.</p>
+      <p style="margin-top:8px"><a href="#privacy">Privacy Policy</a> • <a href="#contact">Contact</a></p>
     </div>
+  </footer>
 
-    <!-- Membership Plans -->
-    <h2 class="section-title" id="membership">MEMBERSHIP PLANS</h2>
-    <div class="plans-container">
-        <details>
-            <summary>F&O Trading Plan</summary>
-            <p class="coming-soon">Coming Soon</p>
-        </details>
-        <details>
-            <summary>Crypto Plan</summary>
-            <p class="coming-soon">Coming Soon</p>
-        </details>
-        <details>
-            <summary>MCX Plan</summary>
-            <p class="coming-soon">Coming Soon</p>
-        </details>
-        <details>
-            <summary>Equity Swing Plan</summary>
-            <p class="coming-soon">Coming Soon</p>
-        </details>
-        <details>
-            <summary>Intraday Options Plan</summary>
-            <p class="coming-soon">Coming Soon</p>
-        </details>
-    </div>
+  <!-- Floating WhatsApp button (replace number in href) -->
+  <div class="floating" aria-hidden="false">
+    <a href="https://wa.me/919999999999" target="_blank" rel="noopener" title="Chat on WhatsApp">
+      <!-- WhatsApp SVG -->
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.52 3.48C18.08 1.04 14.74 0 11.34 0 5.08 0 .02 5.06 .02 11.33c0 1.99.52 3.92 1.5 5.63L0 24l7.49-1.9c1.66.9 3.57 1.37 5.85 1.37 6.26 0 11.32-5.06 11.32-11.33 0-3.4-1.04-6.74-3.14-8.67z" fill="#fff" opacity=".06"/>
+        <path d="M17.5 14.2c-.3-.15-1.76-.86-2.03-.96-.27-.1-.47-.15-.67.15-.2.3-.78.96-.95 1.16-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.47.13-.62.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.18.05-.35-.02-.5-.07-.16-.67-1.62-.92-2.22-.24-.57-.48-.5-.67-.51-.17-.01-.36-.01-.55-.01-.18 0-.5.07-.76.35-.27.29-1.05 1.03-1.05 2.51 0 1.48 1.07 2.92 1.22 3.12.15.2 2.1 3.2 5.08 4.49 2.98 1.28 2.98.85 3.52.8.54-.05 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.08-.12-.28-.2-.58-.35z" fill="#fff"/>
+      </svg>
+    </a>
+  </div>
 
-    <!-- Footer -->
-    <footer id="privacy">
-        <p>All Rights Reserved | © 2025 Bull Brain Trader</p>
-        <p><a href="#privacy">Privacy Policy</a></p>
-    </footer>
+  <!-- Small scripts -->
+  <script>
+    // Set year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Mobile nav toggle (simple)
+    (function(){
+      const btn = document.getElementById('hambBtn');
+      if(!btn) return;
+      const nav = document.querySelector('nav ul');
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if(nav.style.display === 'flex') { nav.style.display = 'none'; }
+        else { nav.style.display = 'flex'; nav.style.flexDirection = 'column'; nav.style.gap = '10px'; nav.style.position = 'absolute'; nav.style.right = '20px'; nav.style.top = '64px'; nav.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0.65))'; nav.style.padding = '14px'; nav.style.borderRadius = '12px'; }
+      });
+    })();
+  </script>
 </body>
 </html>
 
