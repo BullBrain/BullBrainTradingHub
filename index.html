@@ -1,288 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bull & Brain Trading Hub</title>
-
-<style>
-:root {
-    --bg: #0a0a0a;
-    --gold: #ffdd55;
-    --text: #ffd86b;
-    --panel: #111;
-    --radius: 14px;
-}
-*{ box-sizing:border-box; }
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0a0a0a;
-    color: white;
-}
-
-/* HEADER */
-header {
-    background: rgba(0,0,0,0.8);
-    padding: 12px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky;
-    top:0;
-    z-index:10;
-    border-bottom: 1px solid rgba(255,221,85,0.15);
-}
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.logo-container img{
-    height: 45px;
-}
-
-/* NAV */
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-    margin: 0;
-}
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 15px;
-    font-weight: bold;
-    transition: .3s;
-}
-nav ul li a:hover {
-    color: var(--gold);
-}
-
-/* HERO */
-.hero {
-    padding: 80px 20px;
-    text-align: center;
-    position: relative;
-}
-.hero img.main-logo {
-    width: 180px;
-    display:block;
-    margin: auto;
-    filter: drop-shadow(0 0 35px rgba(255,221,85,0.3));
-}
-.hero img.bg-logo {
-    width: 550px;
-    opacity: 0.06;
-    position:absolute;
-    left:50%; top:50%;
-    transform:translate(-50%, -55%);
-}
-.hero h1{
-    font-size: 40px;
-    color: var(--gold);
-    margin-top: 15px;
-    text-shadow: 0 0 18px rgba(255,221,85,0.4);
-}
-
-/* SECTIONS */
-.section-title {
-    text-align: center;
-    font-size: 27px;
-    margin: 80px 0 30px;
-    color: var(--gold);
-}
-
-/* SERVICES */
-.services {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 22px;
-}
-.service-card {
-    width: 230px;
-    background: var(--panel);
-    text-align: center;
-    padding: 20px;
-    border-radius: var(--radius);
-    border: 1px solid rgba(255,221,85,0.18);
-    box-shadow: 0 0 15px rgba(255,221,85,0.10);
-}
-.service-card p {
-    font-size: 17px;
-    color: var(--text);
-    margin-top: 10px;
-}
-
-/* MEMBERSHIP */
-.plans-container {
-    width: 90%;
-    margin: auto;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
-}
-.plan {
-    width: 280px;
-    background: rgba(255,221,85,0.04);
-    border: 2px solid rgba(255,221,85,0.25);
-    padding: 20px;
-    border-radius: var(--radius);
-    text-align:center;
-}
-.plan h3 {
-    color: var(--gold);
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-.plan ul {
-    text-align:left;
-    margin-top:10px;
-}
-.plan ul li {
-    margin-bottom: 7px;
-    color: #fff;
-    font-size: 14px;
-}
-.plan .btn {
-    margin-top: 12px;
-    display: inline-block;
-    padding: 10px 18px;
-    background: var(--gold);
-    color: #000;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: var(--radius);
-}
-
-/* JOIN COMMUNITY */
-.social-icons {
-    margin-top: 20px;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-}
-.social-icons img {
-    width: 45px;
-    transition: .3s;
-}
-.social-icons img:hover {
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 20px rgba(255,221,85,0.4));
-}
-
-/* FOOTER */
-footer {
-    padding: 25px;
-    background:#000;
-    border-top:1px solid rgba(255,255,255,0.08);
-    text-align:center;
-    font-size:14px;
-    color: rgba(255,255,255,0.6);
-}
-footer a{ color: var(--gold); text-decoration:none; }
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bull & Brain Trading Hub</title>
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --gold: #ffdd55;
+      --text: #ffd86b;
+      --panel: #111;
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body {
+      background: var(--bg);
+      color: white;
+      font-family: Arial, sans-serif;
+      line-height:1.45;
+    }
+    header {
+      position: sticky; top:0; z-index:10;
+      background: rgba(0,0,0,0.8);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 20px;
+      border-bottom:1px solid rgba(255,221,85,0.15);
+    }
+    .logo-container {
+      display:flex; align-items:center; gap:8px;
+    }
+    .logo-container img {
+      height:45px;
+    }
+    .logo-container span {
+      font-size:18px;
+      font-weight:bold;
+      color: var(--gold);
+    }
+    nav ul {
+      list-style:none;
+      display:flex; align-items:center; gap:20px;
+    }
+    nav ul li a {
+      text-decoration:none;
+      color:#fff;
+      font-size:15px;
+      font-weight:600;
+      transition:0.3s;
+    }
+    nav ul li a:hover {
+      color: var(--gold);
+    }
+    /* Hero */
+    .hero {
+      text-align:center;
+      padding:70px 20px 40px;
+      position: relative;
+    }
+    .hero img.main-logo {
+      width:180px;
+      margin:auto;
+      display:block;
+      filter: drop-shadow(0 0 30px rgba(255,221,85,0.3));
+    }
+    .hero img.bg-logo {
+      width:550px;
+      opacity:0.06;
+      position:absolute;
+      left:50%; top:50%;
+      transform: translate(-50%, -55%);
+    }
+    .hero h1 {
+      font-size:38px;
+      color: var(--gold);
+      margin-top:20px;
+      text-shadow:0 0 18px rgba(255,221,85,0.4);
+    }
+    /* Ticker Section */
+    .ticker-wrap {
+      background: #111;
+      padding: 8px 0;
+      margin: 0 20px;
+      overflow:hidden;
+    }
+    .ticker-title {
+      font-size:14px;
+      color: var(--gold);
+      margin-left:20px;
+      display:inline-block;
+    }
+    /* Services */
+    .section-title {
+      text-align:center;
+      font-size:26px;
+      color: var(--gold);
+      margin:60px 0 30px;
+    }
+    .services {
+      display:flex; justify-content:center; flex-wrap:wrap; gap:22px; padding:0 10px;
+    }
+    .service-card {
+      width:220px;
+      background: var(--panel);
+      padding:18px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,221,85,0.18);
+      text-align:center;
+      box-shadow:0 0 15px rgba(255,221,85,0.10);
+    }
+    .service-card p {
+      margin-top:12px;
+      font-size:16px;
+      color: var(--text);
+    }
+    /* Membership */
+    .plans-container {
+      width:90%;
+      margin:auto;
+      display:flex; justify-content:center; flex-wrap:wrap; gap:20px;
+      padding:0 10px;
+    }
+    .plan {
+      width:260px;
+      background: rgba(255,221,85,0.04);
+      border:2px solid rgba(255,221,85,0.25);
+      border-radius:var(--radius);
+      padding:20px;
+      text-align:left;
+      color:#fff;
+    }
+    .plan h3 {
+      color: var(--gold);
+      font-size:20px;
+      margin-bottom:8px;
+    }
+    .plan ul {
+      list-style: none;
+      padding-left:0;
+    }
+    .plan ul li {
+      margin-bottom:8px;
+      font-size:14px;
+    }
+    .plan .btn {
+      display:block;
+      margin-top:12px;
+      padding:10px 14px;
+      background: var(--gold);
+      color:#000;
+      text-decoration:none;
+      font-weight:bold;
+      text-align:center;
+      border-radius:var(--radius);
+    }
+    /* Join */
+    .social-icons {
+      display:flex;
+      justify-content:center;
+      gap:25px;
+      margin-top:20px;
+    }
+    .social-icons img {
+      width:45px;
+      transition:0.3s;
+    }
+    .social-icons img:hover {
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 20px rgba(255,221,85,0.4));
+    }
+    /* Footer */
+    footer {
+      text-align:center;
+      padding:20px 10px;
+      background: #000;
+      color: rgba(255,255,255,0.6);
+      font-size:14px;
+      border-top:1px solid rgba(255,255,255,0.08);
+      margin-top:60px;
+    }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    /* Responsive */
+    @media (max-width:600px){
+      nav ul {
+        display:none;
+      }
+      .logo-container {
+        gap:6px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-    <div class="logo-container">
-        <img src="logo.png" alt="Logo">
-        <span style="font-weight:bold; color:var(--gold);">Bull & Brain</span>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#membership">Membership</a></li>
-            <li><a href="#join">Join</a></li>
-        </ul>
-    </nav>
+  <div class="logo-container">
+    <img src="logo.png" alt="Logo">
+    <span>Bull & Brain</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#membership">Membership</a></li>
+      <li><a href="#join">Join</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a target="_blank" href="https://t.me/BullBrainTradingHub">Telegram</a></li>
+    </ul>
+  </nav>
 </header>
 
-
-<!-- HERO -->
 <section class="hero">
-    <img src="logo.png" alt="Big Logo" class="main-logo">
-    <img src="logo.png" alt="" aria-hidden="true" class="bg-logo">
-    <h1>Where Logic Meets Profits</h1>
+  <img src="logo.png" alt="Big Logo" class="main-logo">
+  <img src="logo.png" alt="" class="bg-logo" aria-hidden="true">
+  <h1>Where Logic Meets Profits</h1>
 </section>
 
+<!-- Live Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker-title">Live Market:</div>
+  <!-- TradingView Ticker Tape widget begin -->
+  <div class="tradingview-widget-container">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {
+          "proName": "NSE:NIFTY",
+          "title": "Nifty 50"
+        },
+        {
+          "proName": "NSE:BANKNIFTY",
+          "title": "Bank Nifty"
+        },
+        {
+          "proName": "SENSEX",
+          "title": "Sensex"
+        }
+      ],
+      "colorTheme": "dark",
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "locale": "en"
+    }
+    </script>
+  </div>
+  <!-- TradingView Ticker Tape widget end -->
+</div>
 
-<!-- SERVICES -->
 <h2 class="section-title" id="services">Our Services</h2>
 <div class="services">
-    <div class="service-card"><p>Live Market Calls</p></div>
-    <div class="service-card"><p>Market Analysis</p></div>
-    <div class="service-card"><p>Trading Support</p></div>
-    <div class="service-card"><p>Community Access</p></div>
+  <div class="service-card">
+    <p>📈 Live Market Calls</p>
+  </div>
+  <div class="service-card">
+    <p>📊 Market Analysis</p>
+  </div>
+  <div class="service-card">
+    <p>🤝 Trading Support</p>
+  </div>
+  <div class="service-card">
+    <p>👥 Community Access</p>
+  </div>
 </div>
 
-
-<!-- MEMBERSHIP -->
 <h2 class="section-title" id="membership">Membership Plans</h2>
 <div class="plans-container">
-
-    <!-- BASIC -->
-    <div class="plan">
-        <h3>Basic Plan</h3>
-        <ul>
-            <li>Free Telegram Group</li>
-            <li>Market Education</li>
-            <li>Community Access</li>
-            <li>Time to Time Support</li>
-        </ul>
-        <a class="btn" target="_blank" href="https://t.me/BullBrainTradingHub">Join Free Now</a>
-    </div>
-
-    <!-- STANDARD -->
-    <div class="plan">
-        <h3>Standard Plan (Coming Soon)</h3>
-        <ul>
-            <li>Premium Group Access</li>
-            <li>Proper Entry, Exit & Target</li>
-            <li>Majority Community Group Access</li>
-            <li>Daily Calls Recommendations</li>
-            <li>BTST</li>
-        </ul>
-    </div>
-
-    <!-- PREMIUM -->
-    <div class="plan">
-        <h3>Premium Plan (Coming Soon)</h3>
-        <ul>
-            <li>Private Support & Coaching</li>
-            <li>All Premium Groups Access</li>
-            <li>Stocks Recommendations</li>
-            <li>Daily Calls Recommendations</li>
-            <li>Proper Entry, Exit & Target</li>
-            <li>BTST</li>
-        </ul>
-    </div>
-
+  <div class="plan">
+    <h3>Basic Plan</h3>
+    <ul>
+      <li>Free Telegram Group</li>
+      <li>Market Education</li>
+      <li>Community Access</li>
+      <li>Time to Time Support</li>
+    </ul>
+    <a class="btn" target="_blank" href="https://t.me/BullBrainTradingHub">Join Free Now</a>
+  </div>
+  <div class="plan">
+    <h3>Standard Plan (Coming Soon)</h3>
+    <ul>
+      <li>Premium Group Access</li>
+      <li>Proper Entry, Exit & Target</li>
+      <li>Majority Community Group Access</li>
+      <li>Daily Calls Recommendations</li>
+      <li>BTST</li>
+    </ul>
+  </div>
+  <div class="plan">
+    <h3>Premium Plan (Coming Soon)</h3>
+    <ul>
+      <li>Private Support & Coaching</li>
+      <li>All Premium Groups Access</li>
+      <li>Stocks Recommendations</li>
+      <li>Daily Calls Recommendations</li>
+      <li>Proper Entry, Exit & Target</li>
+      <li>BTST</li>
+    </ul>
+  </div>
 </div>
 
-
-<!-- JOIN COMMUNITY -->
 <h2 class="section-title" id="join">Join Our Community</h2>
 <p style="text-align:center;">Follow us on Social Media</p>
 <div class="social-icons">
-    <a href="https://www.instagram.com/bull.braintrader?igsh=OTA1Z2poOGVlNzMx" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
-    </a>
+  <a href="https://www.instagram.com/bull.braintrader?igsh=OTA1Z2poOGVlNzMx" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+  </a>
 </div>
 
-
-<!-- FOOTER -->
 <footer>
-    <p>© 2025 Bull & Brain Trading Hub — All Rights Reserved</p>
-    <p>Trading involves financial risk. Trade wisely.</p>
+  <p>© <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved</p>
+  <p>Trading involves financial risk. Trade wisely.</p>
 </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
-
