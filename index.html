@@ -18,7 +18,9 @@
       color: white;
       font-family: Arial, sans-serif;
       line-height:1.45;
+      overflow-x:hidden; /* ✅ FIX: prevent left-right scroll */
     }
+
     header {
       position: sticky; top:0; z-index:10;
       background: rgba(0,0,0,0.8);
@@ -37,6 +39,7 @@
       font-weight:bold;
       color: var(--gold);
     }
+
     nav ul {
       list-style:none;
       display:flex; align-items:center; gap:20px;
@@ -51,6 +54,47 @@
     nav ul li a:hover {
       color: var(--gold);
     }
+
+    /* ✅ HAMBURGER MENU (MOBILE ONLY) */
+    .hamburger {
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+      color:var(--gold);
+      background:none;
+      border:none;
+    }
+    @media (max-width:600px){
+      nav ul { display:none; }
+
+      .hamburger { display:block; }
+
+      #mobileMenu {
+        display:none;
+        position:absolute;
+        right:20px;
+        top:60px;
+        background:#000;
+        border:1px solid rgba(255,221,85,0.25);
+        border-radius:10px;
+        padding:10px 0;
+        width:180px;
+        text-align:right;
+      }
+      #mobileMenu a {
+        display:block;
+        padding:10px 14px;
+        font-size:16px;
+        font-weight:bold;
+        color:white;
+        text-decoration:none;
+      }
+      #mobileMenu a:hover {
+        background: rgba(255,221,85,0.08);
+        color:var(--gold);
+      }
+    }
+
     /* Hero */
     .hero {
       text-align:center;
@@ -76,12 +120,15 @@
       margin-top:20px;
       text-shadow:0 0 18px rgba(255,221,85,0.4);
     }
-    /* Ticker Section */
+
+    /* ✅ LIVE TICKER FIX */
     .ticker-wrap {
       background: #111;
       padding: 8px 0;
       margin: 0 20px;
-      overflow:hidden;
+      overflow-x:auto;
+      white-space:nowrap;
+      -webkit-overflow-scrolling:touch;
     }
     .ticker-title {
       font-size:14px;
@@ -89,13 +136,14 @@
       margin-left:20px;
       display:inline-block;
     }
-    /* Services */
+
     .section-title {
       text-align:center;
       font-size:26px;
       color: var(--gold);
       margin:60px 0 30px;
     }
+
     .services {
       display:flex; justify-content:center; flex-wrap:wrap; gap:22px; padding:0 10px;
     }
@@ -113,20 +161,25 @@
       font-size:16px;
       color: var(--text);
     }
-    /* Membership */
+
+    /* ✅ MEMBERSHIP BULLET DOTS FIX */
     .plans-container {
       width:90%;
       margin:auto;
       display:flex; justify-content:center; flex-wrap:wrap; gap:20px;
       padding:0 10px;
     }
+    .plan ul {
+      list-style: disc; /* ✅ dots restored */
+      padding-left:18px;
+    }
+
     .plan {
       width:260px;
       background: rgba(255,221,85,0.04);
       border:2px solid rgba(255,221,85,0.25);
       border-radius:var(--radius);
       padding:20px;
-      text-align:left;
       color:#fff;
     }
     .plan h3 {
@@ -134,14 +187,7 @@
       font-size:20px;
       margin-bottom:8px;
     }
-    .plan ul {
-      list-style: none;
-      padding-left:0;
-    }
-    .plan ul li {
-      margin-bottom:8px;
-      font-size:14px;
-    }
+
     .plan .btn {
       display:block;
       margin-top:12px;
@@ -153,6 +199,7 @@
       text-align:center;
       border-radius:var(--radius);
     }
+
     /* Join */
     .social-icons {
       display:flex;
@@ -168,7 +215,7 @@
       transform: scale(1.15);
       filter: drop-shadow(0 0 20px rgba(255,221,85,0.4));
     }
-    /* Footer */
+
     footer {
       text-align:center;
       padding:20px 10px;
@@ -182,15 +229,6 @@
       color: var(--gold);
       text-decoration: none;
     }
-    /* Responsive */
-    @media (max-width:600px){
-      nav ul {
-        display:none;
-      }
-      .logo-container {
-        gap:6px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -200,6 +238,20 @@
     <img src="logo.png" alt="Logo">
     <span>Bull & Brain</span>
   </div>
+
+  <!-- ✅ Hamburger Button -->
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+  <!-- ✅ Mobile Dropdown -->
+  <div id="mobileMenu">
+    <a href="#services">SERVICES</a>
+    <a href="#membership">MEMBERSHIP</a>
+    <a href="#join">JOIN</a>
+    <a href="#contact">CONTACT</a>
+    <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
+  </div>
+
+  <!-- ✅ Keep desktop same -->
   <nav>
     <ul>
       <li><a href="#services">Services</a></li>
@@ -217,26 +269,16 @@
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- Live Ticker -->
+<!-- ✅ Fixed Live Ticker -->
 <div class="ticker-wrap">
   <div class="ticker-title">Live Market:</div>
-  <!-- TradingView Ticker Tape widget begin -->
-  <div class="tradingview-widget-container">
+  <div class="tradingview-widget-container" style="display:inline-block;">
     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
     {
       "symbols": [
-        {
-          "proName": "NSE:NIFTY",
-          "title": "Nifty 50"
-        },
-        {
-          "proName": "NSE:BANKNIFTY",
-          "title": "Bank Nifty"
-        },
-        {
-          "proName": "SENSEX",
-          "title": "Sensex"
-        }
+        { "proName": "NSE:NIFTY", "title": "Nifty 50" },
+        { "proName": "NSE:BANKNIFTY", "title": "Bank Nifty" },
+        { "proName": "BSE:SENSEX", "title": "Sensex" }
       ],
       "colorTheme": "dark",
       "isTransparent": true,
@@ -245,23 +287,14 @@
     }
     </script>
   </div>
-  <!-- TradingView Ticker Tape widget end -->
 </div>
 
 <h2 class="section-title" id="services">Our Services</h2>
 <div class="services">
-  <div class="service-card">
-    <p>📈 Live Market Calls</p>
-  </div>
-  <div class="service-card">
-    <p>📊 Market Analysis</p>
-  </div>
-  <div class="service-card">
-    <p>🤝 Trading Support</p>
-  </div>
-  <div class="service-card">
-    <p>👥 Community Access</p>
-  </div>
+  <div class="service-card"><p>📈 Live Market Calls</p></div>
+  <div class="service-card"><p>📊 Market Analysis</p></div>
+  <div class="service-card"><p>🤝 Trading Support</p></div>
+  <div class="service-card"><p>👥 Community Access</p></div>
 </div>
 
 <h2 class="section-title" id="membership">Membership Plans</h2>
@@ -314,9 +347,13 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ✅ Mobile Menu Toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  }
 </script>
 
 </body>
 </html>
-
-
