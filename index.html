@@ -18,7 +18,7 @@
       color: white;
       font-family: Arial, sans-serif;
       line-height:1.45;
-      overflow-x:hidden;
+      overflow-x:hidden; /* ✅ Fix horizontal scroll */
     }
 
     header {
@@ -28,75 +28,84 @@
       padding:12px 20px;
       border-bottom:1px solid rgba(255,221,85,0.15);
     }
-    .logo-container { display:flex; align-items:center; gap:8px; }
+    .logo-container {
+      display:flex; align-items:center; gap:8px;
+    }
     .logo-container img { height:45px; }
     .logo-container span {
       font-size:18px; font-weight:bold; color: var(--gold);
     }
 
-    nav ul { display:flex; gap:20px; align-items:center; list-style:none; }
+    nav ul { display:flex; gap:20px; list-style:none; }
     nav ul li a {
       text-decoration:none; color:#fff;
-      font-size:15px; font-weight:600; transition:0.3s;
+      font-weight:600; font-size:15px;
     }
-    nav ul li a:hover { color: var(--gold); }
 
     .hamburger {
-      display:none; font-size:28px;
-      cursor:pointer; color:var(--gold);
-      background:none; border:none;
+      display:none;
+      background:none;
+      border:none;
+      color:var(--gold);
+      font-size:28px;
     }
+
     @media(max-width:600px){
       nav ul { display:none; }
-      .hamburger{ display:block; }
+      .hamburger { display:block; }
 
       #mobileMenu {
-        display:none; position:absolute; right:20px; top:60px;
-        background:#000; border-radius:10px;
+        display:none; position:absolute;
+        right:20px; top:60px;
+        background:#000;
+        border-radius:12px;
+        width:180px;
         border:1px solid rgba(255,221,85,0.25);
-        width:180px; text-align:right;
       }
       #mobileMenu a {
-        display:block; padding:10px;
-        font-weight:bold; font-size:16px;
-        text-decoration:none; color:#fff;
+        display:block;
+        padding:10px;
+        color:white;
+        text-decoration:none;
+        font-weight:bold;
       }
       #mobileMenu a:hover {
-        background:rgba(255,221,85,0.08);
+        background:rgba(255,221,85,0.1);
         color:var(--gold);
       }
     }
 
     /* HERO */
-    .hero { text-align:center; padding:70px 20px 40px; position:relative; }
+    .hero { text-align:center; padding:70px 20px 20px; position:relative; }
     .hero img.main-logo { width:180px; margin:auto; display:block; }
     .hero img.bg-logo {
       width:550px; opacity:0.06;
       position:absolute; left:50%; top:50%;
       transform:translate(-50%, -55%);
     }
-    .hero h1 { font-size:38px; color:var(--gold); margin-top:20px; }
+    .hero h1 { color:var(--gold); margin-top:20px; font-size:38px; }
 
-    /* ✅ LIVE MARKET BOXES */
+    /* ✅ Live Market Boxes */
     .market-box-container {
       display:flex;
       justify-content:center;
       flex-wrap:wrap;
       gap:12px;
-      margin:20px 12px;
+      margin:15px 0;
+      padding:0 10px;
     }
     .market-box {
-      background:#111;
-      padding:10px;
       width:120px;
+      background:#111;
+      text-align:center;
+      padding:10px;
       border-radius:8px;
       border:1px solid rgba(255,221,85,0.25);
-      text-align:center;
-      font-size:13px;
     }
-    .market-title { color:var(--gold); font-weight:bold; margin-bottom:3px; }
-    .market-price.up { color:#00ff7f; }
-    .market-price.down { color:#ff4d4d; }
+    .market-title { color:var(--gold); font-size:13px; font-weight:bold; }
+    .market-price { font-size:14px; margin-top:3px; }
+    .up { color:#00ff7f; }
+    .down { color:#ff4d4d; }
 
     .section-title {
       text-align:center;
@@ -109,51 +118,47 @@
       display:flex;
       justify-content:center;
       flex-wrap:wrap;
-      gap:22px;
-      padding:0 10px;
+      gap:20px;
     }
     .service-card {
-      width:220px; background: var(--panel);
+      width:220px; background:var(--panel);
       padding:18px; border-radius:var(--radius);
-      border:1px solid rgba(255,221,85,0.18);
-      text-align:center;
+      text-align:center; border:1px solid rgba(255,221,85,0.25);
     }
-    .service-card p { font-size:16px; color: var(--text); margin-top:12px; }
+    .service-card p { font-size:16px; color:var(--text); }
 
     .plans-container {
       width:90%; margin:auto;
-      display:flex; justify-content:center;
-      flex-wrap:wrap; gap:20px;
+      display:flex; flex-wrap:wrap;
+      justify-content:center;
+      gap:20px;
     }
-    .plan { width:260px; padding:20px;
+    .plan {
+      width:260px; padding:20px;
       background:rgba(255,221,85,0.05);
       border-radius:var(--radius);
       border:2px solid rgba(255,221,85,0.25);
     }
     .plan ul { list-style:disc; padding-left:18px; }
-    .plan h3 { color:var(--gold); font-size:20px; }
 
     .btn {
-      display:block; background:var(--gold);
-      color:#000; text-align:center;
-      padding:10px; text-decoration:none;
-      margin-top:12px; border-radius:var(--radius);
-      font-weight:bold;
+      display:block; text-align:center;
+      background:var(--gold); margin-top:12px;
+      color:#000; font-weight:bold;
+      padding:10px; border-radius:var(--radius);
     }
 
-    .social-icons {
-      display:flex; justify-content:center;
-      gap:25px; margin-top:20px;
-    }
-    .social-icons img { width:45px; }
+    .social-icons { display:flex; justify-content:center; gap:25px; }
 
     footer {
       text-align:center; padding:20px 10px;
-      background:#000; color:rgba(255,255,255,0.6);
+      background:#000;
+      color:rgba(255,255,255,0.6);
       margin-top:60px;
     }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -186,7 +191,7 @@
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- ✅ LIVE MARKET BOXES -->
+<!-- ✅ Live Market Section -->
 <div class="market-box-container">
   <div class="market-box">
     <div class="market-title">NIFTY 50</div>
@@ -222,6 +227,7 @@
     </ul>
     <a class="btn" href="https://t.me/BullBrainTradingHub" target="_blank">Join Free Now</a>
   </div>
+
   <div class="plan">
     <h3>Standard Plan (Coming Soon)</h3>
     <ul>
@@ -232,6 +238,7 @@
       <li>BTST</li>
     </ul>
   </div>
+
   <div class="plan">
     <h3>Premium Plan (Coming Soon)</h3>
     <ul>
@@ -256,38 +263,45 @@
   © <span id="year"></span> Bull & Brain Trading Hub
 </footer>
 
-
-<!-- ✅ LIVE MARKET SCRIPT -->
+<!-- ✅ LIVE MARKET API SCRIPT -->
 <script>
-function updateMarket() {
-  fetch("https://api.allorigins.win/get?url=https://query2.finance.yahoo.com/v8/finance/chart/%5ENSEI")
-    .then(r=>r.json()).then(data=>{
-      let price = data.contents.match(/"regularMarketPrice":([0-9.]+)/);
-      if(price) document.getElementById("sensex").textContent = price[1];
-    });
+const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
 
-  fetch("https://api.allorigins.win/get?url=https://query2.finance.yahoo.com/v8/finance/chart/%5ENSEI")
-    .then(r=>r.json()).then(data=>{
-      let price = data.contents.match(/"regularMarketPrice":([0-9.]+)/);
-      if(price) document.getElementById("nifty").textContent = price[1];
-    });
+function fetchData(symbol, elementId){
+  fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`)
+  .then(res=>res.json())
+  .then(data=>{
+    const price = data.c;
+    const change = data.d;
+    const percent = data.dp;
 
-  fetch("https://api.allorigins.win/get?url=https://query2.finance.yahoo.com/v8/finance/chart/%5ENSEBANK")
-    .then(r=>r.json()).then(data=>{
-      let price = data.contents.match(/"regularMarketPrice":([0-9.]+)/);
-      if(price) document.getElementById("banknifty").textContent = price[1];
-    });
+    const el = document.getElementById(elementId);
+
+    if(price){
+      if(change > 0){
+        el.innerHTML = `${price.toFixed(2)} <span class="up">▲ +${change.toFixed(2)} (+${percent.toFixed(2)}%)</span>`;
+      } else {
+        el.innerHTML = `${price.toFixed(2)} <span class="down">▼ ${change.toFixed(2)} (${percent.toFixed(2)}%)</span>`;
+      }
+    }
+  });
+}
+
+function updateMarket(){
+  fetchData("NSE:NIFTY_50", "nifty");
+  fetchData("NSE:BANKNIFTY", "banknifty");
+  fetchData("BSE:SENSEX", "sensex");
 }
 
 setInterval(updateMarket, 5000);
 updateMarket();
 
-document.getElementById('year').textContent = new Date().getFullYear();
-
 function toggleMenu(){
   const menu = document.getElementById('mobileMenu');
-  menu.style.display = (menu.style.display === "block") ? "none" : "block";
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
+
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
