@@ -4,76 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bull & Brain Trading Hub</title>
-    <style>
-      /* ✅ Fix menu showing behind logo */
-#mobileMenu {
-  z-index: 9999;
-}
-
-/* ✅ Ensure hamburger stays on top */
-.hamburger {
-  z-index: 10000;
-}
-
-/* ✅ Fix main logo — keep it steady when scrolling */
-.hero {
-  position: relative;
-  overflow: visible;
-}
-
-.hero img.main-logo {
-  position: sticky;
-  top: 80px; /* adjust this if needed */
-  z-index: 5;
-}
-
-/* ✅ Also ensure hero background logo does not push width */
-.hero img.bg-logo {
-  max-width: 100%;
-}
-
-    /* ✅ 1. Move hamburger (menu button) fully to right on mobile */
-@media(max-width:600px){
-  .hamburger {
-    margin-left:auto;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-  }
-}
-
-/* ✅ 2. Background logo visibility increased slightly */
-.hero img.bg-logo {
-  opacity: 0.12; /* previously 0.06 */
-}
-
-/* ✅ 3. Main logo stays fixed in hero section during scroll */
-.hero img.main-logo {
-  position: relative;
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* ✅ Already in your code */
-body {
-  background: var(--bg);
-  color: white;
-  font-family: Arial, sans-serif;
-  line-height:1.45;
-  overflow-x:hidden; /* keep */
-}
-
-/* ✅ Add this new rule under everything in the same <style> */
-html, body, header, section, div {
-  max-width:100%;
-  overflow-x:hidden;
-}
-
-/* ✅ Fix Instagram icon size */
-.social-icons img {
-  width:40px; /* original perfect size */
-  height:auto;
-}
+  <style>
     :root {
       --bg: #0a0a0a;
       --gold: #ffdd55;
@@ -87,16 +18,17 @@ html, body, header, section, div {
       color: white;
       font-family: Arial, sans-serif;
       line-height:1.45;
-      overflow-x:hidden; /* ✅ Fix horizontal scroll */
+      overflow-x:hidden;
     }
 
     header {
-      position: sticky; top:0; z-index:10;
-      background: rgba(0,0,0,0.8);
+      position: sticky; top:0; z-index:10000;
+      background: rgba(0,0,0,0.88);
       display:flex; align-items:center; justify-content:space-between;
       padding:12px 20px;
       border-bottom:1px solid rgba(255,221,85,0.15);
     }
+
     .logo-container {
       display:flex; align-items:center; gap:8px;
     }
@@ -105,62 +37,95 @@ html, body, header, section, div {
       font-size:18px; font-weight:bold; color: var(--gold);
     }
 
-    nav ul { display:flex; gap:20px; list-style:none; }
-    nav ul li a {
-      text-decoration:none; color:#fff;
-      font-weight:600; font-size:15px;
+    nav ul {
+      list-style:none;
+      display:flex;
+      gap:20px;
     }
+    nav ul li a {
+      text-decoration:none;
+      color:#fff;
+      font-size:15px;
+      font-weight:600;
+    }
+    nav ul li a:hover { color:var(--gold); }
 
+    /* ✅ Mobile Menu */
     .hamburger {
       display:none;
       background:none;
       border:none;
       color:var(--gold);
       font-size:28px;
+      position:absolute;
+      right:15px;
+      top:15px;
+      z-index:20000;
+    }
+
+    #mobileMenu {
+      display:none;
+      position:absolute;
+      right:15px; top:65px;
+      background:#000;
+      width:180px;
+      border-radius:10px;
+      border:1px solid rgba(255,221,85,0.35);
+      z-index:20000;
+    }
+    #mobileMenu a {
+      display:block;
+      padding:10px 14px;
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+    }
+    #mobileMenu a:hover {
+      background:rgba(255,221,85,0.09);
+      color:var(--gold);
     }
 
     @media(max-width:600px){
       nav ul { display:none; }
       .hamburger { display:block; }
-
-      #mobileMenu {
-        display:none; position:absolute;
-        right:20px; top:60px;
-        background:#000;
-        border-radius:12px;
-        width:180px;
-        border:1px solid rgba(255,221,85,0.25);
-      }
-      #mobileMenu a {
-        display:block;
-        padding:10px;
-        color:white;
-        text-decoration:none;
-        font-weight:bold;
-      }
-      #mobileMenu a:hover {
-        background:rgba(255,221,85,0.1);
-        color:var(--gold);
-      }
     }
 
-    /* HERO */
-    .hero { text-align:center; padding:70px 20px 20px; position:relative; }
-    .hero img.main-logo { width:180px; margin:auto; display:block; }
+    /* ✅ HERO SECTION FIX */
+    .hero {
+      text-align:center;
+      padding:90px 20px 20px;
+      position:relative;
+    }
+    .hero img.main-logo {
+      width:180px;
+      position:relative;
+      z-index:5;
+    }
     .hero img.bg-logo {
-      width:550px; opacity:0.06;
-      position:absolute; left:50%; top:50%;
-      transform:translate(-50%, -55%);
+      width:550px;
+      opacity:0.12;
+      position:absolute;
+      left:50%; top:52%;
+      transform:translate(-50%, -50%);
+      max-width:100%;
     }
-    .hero h1 { color:var(--gold); margin-top:20px; font-size:38px; }
+    /* ✅ Tagline Improve */
+    .hero h1 {
+      font-size:40px;
+      font-weight:bold;
+      margin-top:25px;
+      letter-spacing:1px;
+      color:var(--gold);
+      text-shadow:0 0 18px rgba(255,221,85,0.35);
+    }
 
-    /* ✅ Live Market Boxes */
+    /* ✅ Live Market */
     .market-box-container {
       display:flex;
       justify-content:center;
       flex-wrap:wrap;
       gap:12px;
-      margin:15px 0;
+      margin:18px 0;
       padding:0 10px;
     }
     .market-box {
@@ -171,7 +136,7 @@ html, body, header, section, div {
       border-radius:8px;
       border:1px solid rgba(255,221,85,0.25);
     }
-    .market-title { color:var(--gold); font-size:13px; font-weight:bold; }
+    .market-title { font-size:13px; color:var(--gold); font-weight:bold; }
     .market-price { font-size:14px; margin-top:3px; }
     .up { color:#00ff7f; }
     .down { color:#ff4d4d; }
@@ -179,20 +144,19 @@ html, body, header, section, div {
     .section-title {
       text-align:center;
       font-size:26px;
-      color:var(--gold);
+      color: var(--gold);
       margin:60px 0 30px;
     }
 
     .services {
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:20px;
+      display:flex; justify-content:center;
+      flex-wrap:wrap; gap:20px;
     }
     .service-card {
       width:220px; background:var(--panel);
       padding:18px; border-radius:var(--radius);
-      text-align:center; border:1px solid rgba(255,221,85,0.25);
+      text-align:center;
+      border:1px solid rgba(255,221,85,0.25);
     }
     .service-card p { font-size:16px; color:var(--text); }
 
@@ -203,27 +167,33 @@ html, body, header, section, div {
       gap:20px;
     }
     .plan {
-      width:260px; padding:20px;
-      background:rgba(255,221,85,0.05);
+      width:260px; background:rgba(255,221,85,0.05);
       border-radius:var(--radius);
       border:2px solid rgba(255,221,85,0.25);
+      padding:20px;
     }
     .plan ul { list-style:disc; padding-left:18px; }
-
     .btn {
-      display:block; text-align:center;
-      background:var(--gold); margin-top:12px;
-      color:#000; font-weight:bold;
-      padding:10px; border-radius:var(--radius);
+      display:block;
+      margin-top:12px;
+      padding:10px 14px;
+      background:var(--gold);
+      color:#000;
+      text-decoration:none;
+      font-weight:bold;
+      border-radius:var(--radius);
+      text-align:center;
     }
 
     .social-icons { display:flex; justify-content:center; gap:25px; }
+    .social-icons img { width:42px; height:auto; }
 
     footer {
-      text-align:center; padding:20px 10px;
+      text-align:center;
+      padding:20px 10px;
+      margin-top:60px;
       background:#000;
       color:rgba(255,255,255,0.6);
-      margin-top:60px;
     }
   </style>
 </head>
@@ -260,7 +230,6 @@ html, body, header, section, div {
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- ✅ Live Market Section -->
 <div class="market-box-container">
   <div class="market-box">
     <div class="market-title">NIFTY 50</div>
@@ -332,47 +301,14 @@ html, body, header, section, div {
   © <span id="year"></span> Bull & Brain Trading Hub
 </footer>
 
-<!-- ✅ LIVE MARKET API SCRIPT -->
 <script>
-const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
-
-function fetchData(symbol, elementId){
-  fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`)
-  .then(res=>res.json())
-  .then(data=>{
-    const price = data.c;
-    const change = data.d;
-    const percent = data.dp;
-
-    const el = document.getElementById(elementId);
-
-    if(price){
-      if(change > 0){
-        el.innerHTML = `${price.toFixed(2)} <span class="up">▲ +${change.toFixed(2)} (+${percent.toFixed(2)}%)</span>`;
-      } else {
-        el.innerHTML = `${price.toFixed(2)} <span class="down">▼ ${change.toFixed(2)} (${percent.toFixed(2)}%)</span>`;
-      }
-    }
-  });
-}
-
-function updateMarket(){
-  fetchData("NSE:NIFTY_50", "nifty");
-  fetchData("NSE:BANKNIFTY", "banknifty");
-  fetchData("BSE:SENSEX", "sensex");
-}
-
-setInterval(updateMarket, 5000);
-updateMarket();
+document.getElementById('year').textContent = new Date().getFullYear();
 
 function toggleMenu(){
   const menu = document.getElementById('mobileMenu');
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
-
-document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
 </html>
-
