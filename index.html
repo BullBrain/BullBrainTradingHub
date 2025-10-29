@@ -1,227 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bull & Brain Trading Hub</title>
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --gold: #ffdd55;
-      --text: #ffd86b;
-      --panel: #111;
-      --radius: 14px;
-    }
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body {
-      background: var(--bg);
-      color: white;
-      font-family: Arial, sans-serif;
-      line-height:1.45;
-      overflow-x:hidden;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bull & Brain Trading Hub</title>
 
-    header {
-      position: sticky; top:0; z-index:10000;
-      background: rgba(0,0,0,0.88);
-      display:flex; align-items:center; justify-content:space-between;
-      padding:12px 20px;
-      border-bottom:1px solid rgba(255,221,85,0.15);
-    }
+<style>
+:root {
+  --bg: #0a0a0a;
+  --gold: #ffdd55;
+  --text: #ffd86b;
+  --panel: #111;
+  --radius: 14px;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background:var(--bg);
+  color:white;
+  font-family:Arial, sans-serif;
+  overflow-x:hidden;
+}
 
-    .logo-container {
-      display:flex; align-items:center; gap:8px;
-    }
-    .logo-container img { height:45px; }
-    .logo-container span {
-      font-size:18px; font-weight:bold; color: var(--gold);
-    }
+/* Header */
+header {
+  position:sticky; top:0; z-index:2000;
+  background:rgba(0,0,0,0.85);
+  display:flex; align-items:center;
+  justify-content:space-between;
+  padding:10px 20px;
+}
+.logo-container { display:flex; align-items:center; gap:8px; }
+.logo-container img { height:45px; }
+.logo-container span { font-size:18px; font-weight:bold; color:var(--gold); }
 
-    nav ul {
-      list-style:none;
-      display:flex;
-      gap:20px;
-    }
-    nav ul li a {
-      text-decoration:none;
-      color:#fff;
-      font-size:15px;
-      font-weight:600;
-    }
-    nav ul li a:hover { color:var(--gold); }
+nav ul { display:flex; list-style:none; gap:20px; }
+nav ul li a { color:white; font-size:15px; text-decoration:none; font-weight:bold; }
 
-    /* ✅ Mobile Menu */
-    .hamburger {
-      display:none;
-      background:none;
-      border:none;
-      color:var(--gold);
-      font-size:28px;
-      position:absolute;
-      right:15px;
-      top:15px;
-      z-index:20000;
-    }
+/* Hamburger */
+.hamburger {
+  display:none;
+  background:none;
+  border:none;
+  font-size:30px;
+  color:var(--gold);
+  z-index:3000;
+}
 
-    #mobileMenu {
-      display:none;
-      position:absolute;
-      right:15px; top:65px;
-      background:#000;
-      width:180px;
-      border-radius:10px;
-      border:1px solid rgba(255,221,85,0.35);
-      z-index:20000;
-    }
-    #mobileMenu a {
-      display:block;
-      padding:10px 14px;
-      color:white;
-      text-decoration:none;
-      font-weight:bold;
-    }
-    #mobileMenu a:hover {
-      background:rgba(255,221,85,0.09);
-      color:var(--gold);
-    }
+/* Mobile Menu */
+#mobileMenu {
+  display:none;
+  position:absolute;
+  right:20px;
+  top:60px;
+  background:#000;
+  width:180px;
+  border-radius:10px;
+  border:1px solid rgba(255,221,85,0.3);
+  z-index:2500;
+}
+#mobileMenu a {
+  display:block;
+  padding:12px 14px;
+  font-weight:bold;
+  text-decoration:none;
+  color:white;
+}
+#mobileMenu a:hover {
+  background:rgba(255,221,85,0.12);
+  color:var(--gold);
+}
 
-    @media(max-width:600px){
-      nav ul { display:none; }
-      .hamburger { display:block; }
-    }
+@media(max-width:600px){
+  nav ul { display:none; }
+  .hamburger { display:block; }
+}
 
-    /* ✅ HERO SECTION FIX */
-    .hero {
-      text-align:center;
-      padding:90px 20px 20px;
-      position:relative;
-    }
-    .hero img.main-logo {
-      width:180px;
-      position:relative;
-      z-index:5;
-    }
-    .hero img.bg-logo {
-      width:550px;
-      opacity:0.12;
-      position:absolute;
-      left:50%; top:52%;
-      transform:translate(-50%, -50%);
-      max-width:100%;
-    }
-    /* ✅ Tagline Improve */
-    .hero h1 {
-      font-size:40px;
-      font-weight:bold;
-      margin-top:25px;
-      letter-spacing:1px;
-      color:var(--gold);
-      text-shadow:0 0 18px rgba(255,221,85,0.35);
-    }
+/* Hero */
+.hero {
+  text-align:center;
+  padding:60px 20px 30px;
+  position:relative;
+}
+.hero img.main-logo {
+  width:170px;
+  z-index:5;
+  position:relative;
+}
+.hero img.bg-logo {
+  position:absolute;
+  left:50%; top:45%;
+  transform:translate(-50%, -50%);
+  width:500px;
+  opacity:0.08; /* ✅ reduced opacity */
+  pointer-events:none;
+}
+/* ✅ BIGGER on mobile */
+@media(max-width:600px){
+  .hero img.bg-logo {
+    width:620px;
+    opacity:0.10;
+  }
+}
 
-    /* ✅ Live Market */
-    .market-box-container {
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:12px;
-      margin:18px 0;
-      padding:0 10px;
-    }
-    .market-box {
-      width:120px;
-      background:#111;
-      text-align:center;
-      padding:10px;
-      border-radius:8px;
-      border:1px solid rgba(255,221,85,0.25);
-    }
-    .market-title { font-size:13px; color:var(--gold); font-weight:bold; }
-    .market-price { font-size:14px; margin-top:3px; }
-    .up { color:#00ff7f; }
-    .down { color:#ff4d4d; }
+/* ✅ Tagline improved */
+.hero h1 {
+  font-size:30px;
+  font-weight:bold;
+  letter-spacing:1px;
+  margin-top:18px;
+  color:var(--gold);
+  text-shadow:0 0 18px rgba(255,221,85,0.5);
+}
 
-    .section-title {
-      text-align:center;
-      font-size:26px;
-      color: var(--gold);
-      margin:60px 0 30px;
-    }
+/* Live Market */
+.market-box-container {
+  display:flex; justify-content:center;
+  flex-wrap:wrap; gap:12px;
+  margin:18px 0;
+}
+.market-box {
+  width:120px; background:#111;
+  border-radius:10px; padding:10px;
+  border:1px solid rgba(255,221,85,0.25);
+  text-align:center;
+}
+.market-title { color:var(--gold); font-size:13px; font-weight:bold; }
+.market-price { font-size:14px; margin-top:4px; }
+.up { color:#00ff7f; }
+.down { color:#ff4d4d; }
 
-    .services {
-      display:flex; justify-content:center;
-      flex-wrap:wrap; gap:20px;
-    }
-    .service-card {
-      width:220px; background:var(--panel);
-      padding:18px; border-radius:var(--radius);
-      text-align:center;
-      border:1px solid rgba(255,221,85,0.25);
-    }
-    .service-card p { font-size:16px; color:var(--text); }
+/* Services */
+.section-title {
+  text-align:center; color:var(--gold);
+  margin:50px 0 25px; font-size:26px;
+}
+.services {
+  display:flex; justify-content:center;
+  gap:22px; flex-wrap:wrap;
+}
+.service-card {
+  width:220px; background:var(--panel);
+  padding:16px; text-align:center;
+  border-radius:var(--radius);
+  border:1px solid rgba(255,221,85,0.25);
+}
+.service-card p { font-size:16px; color:var(--text); }
 
-    .plans-container {
-      width:90%; margin:auto;
-      display:flex; flex-wrap:wrap;
-      justify-content:center;
-      gap:20px;
-    }
-    .plan {
-      width:260px; background:rgba(255,221,85,0.05);
-      border-radius:var(--radius);
-      border:2px solid rgba(255,221,85,0.25);
-      padding:20px;
-    }
-    .plan ul { list-style:disc; padding-left:18px; }
-    .btn {
-      display:block;
-      margin-top:12px;
-      padding:10px 14px;
-      background:var(--gold);
-      color:#000;
-      text-decoration:none;
-      font-weight:bold;
-      border-radius:var(--radius);
-      text-align:center;
-    }
+/* Plans */
+.plans-container {
+  width:90%; margin:auto;
+  display:flex; justify-content:center;
+  flex-wrap:wrap; gap:20px;
+}
+.plan {
+  width:260px; padding:18px;
+  border-radius:var(--radius);
+  background:rgba(255,221,85,0.08);
+  border:2px solid rgba(255,221,85,0.25);
+}
+.plan ul { list-style:disc; padding-left:20px; margin-top:10px; }
+.plan h3 { color:var(--gold); font-size:20px; margin-bottom:8px; }
+.btn {
+  display:block; margin-top:12px;
+  background:var(--gold);
+  color:black; font-weight:bold;
+  padding:10px; text-align:center;
+  border-radius:var(--radius);
+}
 
-    .social-icons { display:flex; justify-content:center; gap:25px; }
-    .social-icons img { width:42px; height:auto; }
+/* Join */
+.social-icons {
+  display:flex; justify-content:center;
+  gap:25px; margin-top:20px;
+}
+.social-icons img {
+  width:40px;
+  transition:0.3s;
+}
+.social-icons img:hover {
+  transform:scale(1.15);
+}
 
-    footer {
-      text-align:center;
-      padding:20px 10px;
-      margin-top:60px;
-      background:#000;
-      color:rgba(255,255,255,0.6);
-    }
-  </style>
+/* Footer */
+footer {
+  text-align:center; padding:20px;
+  background:black; margin-top:60px;
+  color:rgba(255,255,255,0.6);
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo-container">
-    <img src="logo.png">
-    <span>Bull & Brain</span>
-  </div>
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
-  <div id="mobileMenu">
-    <a href="#services">SERVICES</a>
-    <a href="#membership">MEMBERSHIP</a>
-    <a href="#join">JOIN</a>
-    <a href="#contact">CONTACT</a>
-    <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#membership">Membership</a></li>
-      <li><a href="#join">Join</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a target="_blank" href="https://t.me/BullBrainTradingHub">Telegram</a></li>
-    </ul>
-  </nav>
+<div class="logo-container">
+  <img src="logo.png">
+  <span>Bull & Brain</span>
+</div>
+
+<button class="hamburger" onclick="toggleMenu()">☰</button>
+
+<div id="mobileMenu">
+  <a href="#services">SERVICES</a>
+  <a href="#membership">MEMBERSHIP</a>
+  <a href="#join">JOIN</a>
+  <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
+</div>
+
+<nav>
+<ul>
+  <li><a href="#services">Services</a></li>
+  <li><a href="#membership">Membership</a></li>
+  <li><a href="#join">Join</a></li>
+  <li><a href="https://t.me/BullBrainTradingHub" target="_blank">Telegram</a></li>
+</ul>
+</nav>
 </header>
 
 <section class="hero">
@@ -230,6 +223,7 @@
   <h1>Where Logic Meets Profits</h1>
 </section>
 
+<!-- Live Data Boxes -->
 <div class="market-box-container">
   <div class="market-box">
     <div class="market-title">NIFTY 50</div>
@@ -249,7 +243,7 @@
 <div class="services">
   <div class="service-card"><p>📈 Live Market Calls</p></div>
   <div class="service-card"><p>📊 Market Analysis</p></div>
-  <div class="service-card"><p>🤝 Trading Support</p></div>
+  <div class="service-card"><p>🤝 Support</p></div>
   <div class="service-card"><p>👥 Community Access</p></div>
 </div>
 
@@ -271,7 +265,6 @@
     <ul>
       <li>Premium Group Access</li>
       <li>Entry, Exit & Target</li>
-      <li>Community Group</li>
       <li>Daily Calls</li>
       <li>BTST</li>
     </ul>
@@ -283,7 +276,6 @@
       <li>Private Coaching</li>
       <li>All Premium Groups</li>
       <li>Stock Recommendations</li>
-      <li>Daily Calls</li>
       <li>Entry, Exit & Target</li>
       <li>BTST</li>
     </ul>
@@ -298,17 +290,39 @@
 </div>
 
 <footer>
-  © <span id="year"></span> Bull & Brain Trading Hub
+© <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved
 </footer>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
+// ✅ LIVE MARKET API
+const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
 
-function toggleMenu(){
-  const menu = document.getElementById('mobileMenu');
-  menu.style.display = menu.style.display === "block" ? "none" : "block";
+function update(symbol, id){
+  fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`)
+  .then(r=>r.json()).then(d=>{
+    const el=document.getElementById(id);
+    if(!d.c) return;
+    const color = d.d>=0 ? "up":"down";
+    const arrow = d.d>=0 ? "▲":"+";
+    el.innerHTML = `${d.c.toFixed(2)} <span class="${color}">${arrow}${d.d.toFixed(2)} (${d.dp.toFixed(2)}%)</span>`;
+  });
 }
+function refresh(){
+  update("NSE:NIFTY_50","nifty");
+  update("NSE:BANKNIFTY","banknifty");
+  update("BSE:SENSEX","sensex");
+}
+setInterval(refresh,6000);
+refresh();
+
+// ✅ Menu Toggle
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  m.style.display = m.style.display==="block" ? "none" : "block";
+}
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 
 </body>
 </html>
+
