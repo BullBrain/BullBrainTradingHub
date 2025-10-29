@@ -7,38 +7,37 @@
 
 <style>
 :root {
-  --bg: #0a0a0a;
-  --gold: #ffdd55;
-  --text: #ffd86b;
-  --panel: #111;
-  --radius: 14px;
+  --bg:#0a0a0a;
+  --gold:#ffdd55;
+  --text:#ffd86b;
+  --panel:#111;
+  --radius:14px;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  background:var(--bg);
-  color:white;
-  font-family:Arial, sans-serif;
-  overflow-x:hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;overflow-x:hidden;}
+body{background:var(--bg);color:white;font-family:Arial, sans-serif;}
 
-/* Header */
-header {
-  position:sticky; top:0; z-index:2000;
-  background:rgba(0,0,0,0.85);
-  display:flex; align-items:center;
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:2000;
+  background:rgba(0,0,0,0.9);
+  display:flex;align-items:center;
   justify-content:space-between;
-  padding:10px 20px;
+  padding:12px 15px;
 }
-.logo-container { display:flex; align-items:center; gap:8px; }
-.logo-container img { height:45px; }
-.logo-container span { font-size:18px; font-weight:bold; color:var(--gold); }
+.logo-container{display:flex;align-items:center;gap:8px;}
+.logo-container img{height:45px;}
+.logo-container span{color:var(--gold);font-size:18px;font-weight:bold;}
 
-nav ul { display:flex; list-style:none; gap:20px; }
-nav ul li a { color:white; font-size:15px; text-decoration:none; font-weight:bold; }
+nav ul{list-style:none;display:flex;gap:18px;}
+nav ul li a{text-decoration:none;color:white;font-weight:bold;font-size:15px;}
 
-/* Hamburger */
-.hamburger {
+/* ✅ Hamburger FIXED TOP RIGHT */
+.hamburger{
   display:none;
+  position:absolute;
+  right:15px;
+  top:12px;
   background:none;
   border:none;
   font-size:30px;
@@ -46,145 +45,128 @@ nav ul li a { color:white; font-size:15px; text-decoration:none; font-weight:bol
   z-index:3000;
 }
 
-/* Mobile Menu */
-#mobileMenu {
+/* ✅ Mobile Menu */
+#mobileMenu{
   display:none;
   position:absolute;
-  right:20px;
-  top:60px;
+  top:55px;
+  right:10px;
   background:#000;
-  width:180px;
-  border-radius:10px;
+  width:175px;
+  border-radius:12px;
   border:1px solid rgba(255,221,85,0.3);
   z-index:2500;
 }
-#mobileMenu a {
-  display:block;
-  padding:12px 14px;
-  font-weight:bold;
-  text-decoration:none;
-  color:white;
+#mobileMenu a{
+  display:block;padding:12px 10px;
+  color:white;font-weight:bold;
+  text-decoration:none;text-align:right;
 }
-#mobileMenu a:hover {
+#mobileMenu a:hover{
   background:rgba(255,221,85,0.12);
   color:var(--gold);
 }
 
-@media(max-width:600px){
-  nav ul { display:none; }
-  .hamburger { display:block; }
+@media(max-width:650px){
+  nav ul{display:none;}
+  .hamburger{display:block;}
 }
 
-/* Hero */
-.hero {
-  text-align:center;
-  padding:60px 20px 30px;
-  position:relative;
+/* HERO */
+.hero{
+  text-align:center;padding:70px 20px 35px;
+  position:relative;overflow:hidden;
 }
-.hero img.main-logo {
-  width:170px;
-  z-index:5;
-  position:relative;
+.hero img.main-logo{
+  width:170px;position:relative;z-index:5;
 }
-.hero img.bg-logo {
-  position:absolute;
-  left:50%; top:45%;
-  transform:translate(-50%, -50%);
+.hero img.bg-logo{
   width:500px;
-  opacity:0.08; /* ✅ reduced opacity */
-  pointer-events:none;
+  position:absolute;
+  left:50%;top:48%;
+  transform:translate(-50%, -50%);
+  opacity:0.08;pointer-events:none;
 }
-/* ✅ BIGGER on mobile */
-@media(max-width:600px){
-  .hero img.bg-logo {
-    width:620px;
-    opacity:0.10;
-  }
+@media(max-width:650px){
+  .hero img.bg-logo{width:650px;opacity:0.10;}
 }
-
-/* ✅ Tagline improved */
-.hero h1 {
-  font-size:30px;
-  font-weight:bold;
-  letter-spacing:1px;
+.hero h1{
+  font-size:30px;font-weight:bold;
   margin-top:18px;
   color:var(--gold);
   text-shadow:0 0 18px rgba(255,221,85,0.5);
 }
 
-/* Live Market */
-.market-box-container {
-  display:flex; justify-content:center;
-  flex-wrap:wrap; gap:12px;
-  margin:18px 0;
+/* ✅ LIVE MARKET */
+.market-box-container{
+  display:flex;justify-content:center;
+  flex-wrap:wrap;gap:12px;margin:18px 0;
 }
-.market-box {
-  width:120px; background:#111;
-  border-radius:10px; padding:10px;
+.market-box{
+  width:120px;background:#111;
+  padding:10px;border-radius:10px;
   border:1px solid rgba(255,221,85,0.25);
   text-align:center;
 }
-.market-title { color:var(--gold); font-size:13px; font-weight:bold; }
-.market-price { font-size:14px; margin-top:4px; }
-.up { color:#00ff7f; }
-.down { color:#ff4d4d; }
+.market-title{font-size:13px;color:var(--gold);font-weight:bold;}
+.market-price{font-size:14px;margin-top:4px;}
+.up{color:#00ff7f;}
+.down{color:#ff4d4d;}
 
-/* Services */
-.section-title {
-  text-align:center; color:var(--gold);
-  margin:50px 0 25px; font-size:26px;
+/* SECTIONS */
+.section-title{
+  text-align:center;font-size:26px;
+  color:var(--gold);margin:50px 0 25px;
 }
-.services {
-  display:flex; justify-content:center;
-  gap:22px; flex-wrap:wrap;
+.services{
+  display:flex;flex-wrap:wrap;
+  justify-content:center;gap:20px;
 }
-.service-card {
-  width:220px; background:var(--panel);
-  padding:16px; text-align:center;
-  border-radius:var(--radius);
+.service-card{
+  width:220px;background:var(--panel);
+  padding:18px;border-radius:var(--radius);
   border:1px solid rgba(255,221,85,0.25);
+  text-align:center;
 }
-.service-card p { font-size:16px; color:var(--text); }
+.service-card p{color:var(--text);font-size:16px;}
 
-/* Plans */
-.plans-container {
-  width:90%; margin:auto;
-  display:flex; justify-content:center;
-  flex-wrap:wrap; gap:20px;
+/* PLANS */
+.plans-container{
+  width:90%;margin:auto;
+  display:flex;flex-wrap:wrap;
+  justify-content:center;gap:18px;
 }
-.plan {
-  width:260px; padding:18px;
-  border-radius:var(--radius);
+.plan{
+  width:260px;padding:18px;
   background:rgba(255,221,85,0.08);
+  border-radius:var(--radius);
   border:2px solid rgba(255,221,85,0.25);
 }
-.plan ul { list-style:disc; padding-left:20px; margin-top:10px; }
-.plan h3 { color:var(--gold); font-size:20px; margin-bottom:8px; }
-.btn {
-  display:block; margin-top:12px;
+.plan ul{list-style:disc;padding-left:20px;margin-top:10px;}
+.plan h3{color:var(--gold);font-size:20px;}
+
+.btn{
+  display:block;margin-top:12px;
   background:var(--gold);
-  color:black; font-weight:bold;
-  padding:10px; text-align:center;
+  color:black;font-weight:bold;
+  padding:10px;text-align:center;
   border-radius:var(--radius);
 }
 
-/* Join */
-.social-icons {
-  display:flex; justify-content:center;
-  gap:25px; margin-top:20px;
+/* Social */
+.social-icons{
+  display:flex;justify-content:center;
+  gap:25px;margin-top:20px;
 }
-.social-icons img {
-  width:40px;
-  transition:0.3s;
+.social-icons img{
+  width:40px;transition:0.3s;
 }
-.social-icons img:hover {
-  transform:scale(1.15);
-}
+.social-icons img:hover{transform:scale(1.15);}
 
-/* Footer */
-footer {
-  text-align:center; padding:20px;
-  background:black; margin-top:60px;
+/* FOOTER */
+footer{
+  text-align:center;padding:18px;
+  background:#000;margin-top:60px;
   color:rgba(255,255,255,0.6);
 }
 </style>
@@ -193,28 +175,28 @@ footer {
 <body>
 
 <header>
-<div class="logo-container">
-  <img src="logo.png">
-  <span>Bull & Brain</span>
-</div>
+  <div class="logo-container">
+    <img src="logo.png">
+    <span>Bull & Brain</span>
+  </div>
 
-<button class="hamburger" onclick="toggleMenu()">☰</button>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
 
-<div id="mobileMenu">
-  <a href="#services">SERVICES</a>
-  <a href="#membership">MEMBERSHIP</a>
-  <a href="#join">JOIN</a>
-  <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
-</div>
+  <div id="mobileMenu">
+    <a href="#services">SERVICES</a>
+    <a href="#membership">MEMBERSHIP</a>
+    <a href="#join">JOIN</a>
+    <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
+  </div>
 
-<nav>
-<ul>
-  <li><a href="#services">Services</a></li>
-  <li><a href="#membership">Membership</a></li>
-  <li><a href="#join">Join</a></li>
-  <li><a href="https://t.me/BullBrainTradingHub" target="_blank">Telegram</a></li>
-</ul>
-</nav>
+  <nav>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#join">Join</a></li>
+    <li><a target="_blank" href="https://t.me/BullBrainTradingHub">Telegram</a></li>
+  </ul>
+  </nav>
 </header>
 
 <section class="hero">
@@ -223,20 +205,10 @@ footer {
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- Live Data Boxes -->
 <div class="market-box-container">
-  <div class="market-box">
-    <div class="market-title">NIFTY 50</div>
-    <div id="nifty" class="market-price">--</div>
-  </div>
-  <div class="market-box">
-    <div class="market-title">BANKNIFTY</div>
-    <div id="banknifty" class="market-price">--</div>
-  </div>
-  <div class="market-box">
-    <div class="market-title">SENSEX</div>
-    <div id="sensex" class="market-price">--</div>
-  </div>
+  <div class="market-box"><div class="market-title">NIFTY 50</div><div id="nifty" class="market-price">--</div></div>
+  <div class="market-box"><div class="market-title">BANKNIFTY</div><div id="banknifty" class="market-price">--</div></div>
+  <div class="market-box"><div class="market-title">SENSEX</div><div id="sensex" class="market-price">--</div></div>
 </div>
 
 <h2 class="section-title" id="services">Our Services</h2>
@@ -294,17 +266,16 @@ footer {
 </footer>
 
 <script>
-// ✅ LIVE MARKET API
-const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
-
-function update(symbol, id){
-  fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`)
+// Live data
+const API_KEY="d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
+function update(sym,id){
+  fetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=${API_KEY}`)
   .then(r=>r.json()).then(d=>{
     const el=document.getElementById(id);
     if(!d.c) return;
-    const color = d.d>=0 ? "up":"down";
-    const arrow = d.d>=0 ? "▲":"+";
-    el.innerHTML = `${d.c.toFixed(2)} <span class="${color}">${arrow}${d.d.toFixed(2)} (${d.dp.toFixed(2)}%)</span>`;
+    const c=d.d>=0 ? "up":"down";
+    const a=d.d>=0 ? "▲":"+";
+    el.innerHTML=`${d.c.toFixed(2)} <span class="${c}">${a}${d.d.toFixed(2)} (${d.dp.toFixed(2)}%)</span>`;
   });
 }
 function refresh(){
@@ -312,17 +283,15 @@ function refresh(){
   update("NSE:BANKNIFTY","banknifty");
   update("BSE:SENSEX","sensex");
 }
-setInterval(refresh,6000);
-refresh();
+setInterval(refresh,7000);refresh();
 
-// ✅ Menu Toggle
+// Mobile Menu
 function toggleMenu(){
-  const m=document.getElementById('mobileMenu');
-  m.style.display = m.style.display==="block" ? "none" : "block";
+  const m=document.getElementById("mobileMenu");
+  m.style.display=m.style.display==="block"?"none":"block";
 }
-document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
 </script>
 
 </body>
 </html>
-
