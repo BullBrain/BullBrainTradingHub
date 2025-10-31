@@ -207,12 +207,28 @@ footer{
 </div>
 
 <script>
-/* ✅ Live Market (Finnhub API — Fixed for GitHub Pages) */
+<!-- ✅ LIVE MARKET SECTION (Centered + Finnhub working) -->
+<div class="market-box-container" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:15px;margin:15px 0;">
+  <div class="market-box" style="width:120px;background:#111;text-align:center;padding:10px;border-radius:8px;border:1px solid rgba(255,221,85,0.25);">
+    <div class="market-title" style="color:#ffdd55;font-size:13px;font-weight:bold;">NIFTY 50</div>
+    <div id="nifty" class="market-price" style="font-size:14px;margin-top:3px;">--</div>
+  </div>
+  <div class="market-box" style="width:120px;background:#111;text-align:center;padding:10px;border-radius:8px;border:1px solid rgba(255,221,85,0.25);">
+    <div class="market-title" style="color:#ffdd55;font-size:13px;font-weight:bold;">BANK NIFTY</div>
+    <div id="banknifty" class="market-price" style="font-size:14px;margin-top:3px;">--</div>
+  </div>
+  <div class="market-box" style="width:120px;background:#111;text-align:center;padding:10px;border-radius:8px;border:1px solid rgba(255,221,85,0.25);">
+    <div class="market-title" style="color:#ffdd55;font-size:13px;font-weight:bold;">SENSEX</div>
+    <div id="sensex" class="market-price" style="font-size:14px;margin-top:3px;">--</div>
+  </div>
+</div>
+
+<script>
+/* ✅ Finnhub Live Market Data */
 const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
 
-/* Corrected Finnhub-compatible symbols */
 const symbols = {
-  nifty: "%5ENSEI",       // Nifty 50
+  nifty: "%5ENSEI",        // Nifty 50
   banknifty: "%5ENSEBANK", // Bank Nifty
   sensex: "%5EBSESN"       // Sensex
 };
@@ -222,25 +238,18 @@ async function fetchData(symbol, elementId) {
     const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`);
     const data = await res.json();
     const el = document.getElementById(elementId);
+    if (!data || !el || !data.c) return;
 
-    if (data && data.c && el) {
-      const price = data.c;
-      const change = data.d;
-      const percent = data.dp;
-      const isUp = change >= 0;
-      const arrow = isUp ? "▲" : "▼";
-      const colorClass = isUp ? "up" : "down";
+    const price = data.c;
+    const change = data.d;
+    const percent = data.dp;
+    const up = change >= 0;
+    const arrow = up ? "▲" : "▼";
+    const color = up ? "#00ff7f" : "#ff4d4d";
 
-      el.innerHTML = `
-        ${price.toFixed(2)} 
-        <span class="${colorClass}">
-          ${arrow} ${change.toFixed(2)} (${percent.toFixed(2)}%)
-        </span>`;
-    } else {
-      el.textContent = "--";
-    }
-  } catch (err) {
-    console.error("Error:", symbol, err);
+    el.innerHTML = `${price.toFixed(2)} <span style="color:${color};font-weight:bold;">${arrow} ${change.toFixed(2)} (${percent.toFixed(2)}%)</span>`;
+  } catch (e) {
+    console.error("Error fetching data:", symbol, e);
   }
 }
 
@@ -250,9 +259,8 @@ function updateMarket() {
   fetchData(symbols.sensex, "sensex");
 }
 
-/* Update every 15 seconds */
 updateMarket();
-setInterval(updateMarket, 15000);
+setInterval(updateMarket, 15000); // updates every 15 sec
 </script>
 
 
