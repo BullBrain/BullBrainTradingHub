@@ -190,7 +190,7 @@ footer{
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- ✅ LIVE MARKET SECTION (updated with Finnhub working symbols) -->
+<!-- ✅ LIVE MARKET SECTION (Finnhub Fixed, same design & placement) -->
 <div class="market-box-container">
   <div class="market-box">
     <div class="market-title">NIFTY 50</div>
@@ -207,38 +207,53 @@ footer{
 </div>
 
 <script>
-/* ✅  Finnhub Live Market Data  */
+/* ✅ Live Market (Finnhub API — Fixed for GitHub Pages) */
 const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
 
-async function fetchQuote(symbol, elementId) {
+/* Corrected Finnhub-compatible symbols */
+const symbols = {
+  nifty: "%5ENSEI",       // Nifty 50
+  banknifty: "%5ENSEBANK", // Bank Nifty
+  sensex: "%5EBSESN"       // Sensex
+};
+
+async function fetchData(symbol, elementId) {
   try {
     const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`);
     const data = await res.json();
     const el = document.getElementById(elementId);
-    if (!el || !data.c) return;
 
-    const price = data.c;
-    const change = data.d;
-    const percent = data.dp;
-    const sign = change >= 0 ? '+' : '';
-    const color = change >= 0 ? 'up' : 'down';
-    const arrow = change >= 0 ? '▲' : '▼';
+    if (data && data.c && el) {
+      const price = data.c;
+      const change = data.d;
+      const percent = data.dp;
+      const isUp = change >= 0;
+      const arrow = isUp ? "▲" : "▼";
+      const colorClass = isUp ? "up" : "down";
 
-    el.innerHTML = `${price.toFixed(2)} <span class="${color}">${arrow} ${sign}${change.toFixed(2)} (${sign}${percent.toFixed(2)}%)</span>`;
-  } catch (e) {
-    console.error(symbol, e);
+      el.innerHTML = `
+        ${price.toFixed(2)} 
+        <span class="${colorClass}">
+          ${arrow} ${change.toFixed(2)} (${percent.toFixed(2)}%)
+        </span>`;
+    } else {
+      el.textContent = "--";
+    }
+  } catch (err) {
+    console.error("Error:", symbol, err);
   }
 }
 
 function updateMarket() {
-  fetchQuote("^NSEI", "nifty");      // Nifty 50
-  fetchQuote("^NSEBANK", "banknifty"); // Bank Nifty
-  fetchQuote("^BSESN", "sensex");    // Sensex
+  fetchData(symbols.nifty, "nifty");
+  fetchData(symbols.banknifty, "banknifty");
+  fetchData(symbols.sensex, "sensex");
 }
-updateMarket();
-setInterval(updateMarket, 15000); // refresh every 15 s
-</script>
 
+/* Update every 15 seconds */
+updateMarket();
+setInterval(updateMarket, 15000);
+</script>
 
 
 <h2 class="section-title" id="services">Our Services</h2>
