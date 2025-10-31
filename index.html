@@ -264,6 +264,75 @@ footer{
     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
   </a>
 </div>
+  <!-- ===== Contact Section (Add this after .social-icons and before <footer>) ===== -->
+<section id="contact" style="padding:40px 18px; max-width:900px; margin:30px auto;">
+  <h2 class="section-title" style="margin-bottom:18px;">Contact Us</h2>
+
+  <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;justify-content:center;">
+    <form id="contactForm" action="https://formspree.io/f/xyzbnbrp" method="POST" style="width:100%;max-width:720px;background:var(--panel);padding:18px;border-radius:14px;border:1px solid rgba(255,221,85,0.12);">
+      <input type="hidden" name="_subject" value="Website Contact — Bull & Brain">
+
+      <label style="display:block;margin-bottom:8px;font-weight:bold;color:var(--text);">Name</label>
+      <input name="name" required type="text" placeholder="Your name" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,221,85,0.08);margin-bottom:10px;background:#0b0b0b;color:white;">
+
+      <label style="display:block;margin-bottom:8px;font-weight:bold;color:var(--text);">Email</label>
+      <input name="email" required type="email" placeholder="your@email.com" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,221,85,0.08);margin-bottom:10px;background:#0b0b0b;color:white;">
+
+      <label style="display:block;margin-bottom:8px;font-weight:bold;color:var(--text);">Message</label>
+      <textarea name="message" required rows="5" placeholder="Write your message..." style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,221,85,0.08);margin-bottom:12px;background:#0b0b0b;color:white;"></textarea>
+
+      <input type="hidden" name="_replyto" value="">
+      <div id="formStatus" style="margin-bottom:12px;color:var(--text);display:none;"></div>
+
+      <button type="submit" style="background:var(--gold);color:black;padding:10px 16px;border-radius:12px;border:none;font-weight:bold;cursor:pointer;">Send Message</button>
+    </form>
+
+    <div style="width:260px;background:#0b0b0b;padding:16px;border-radius:12px;border:1px solid rgba(255,221,85,0.08);height:fit-content;">
+      <h4 style="color:var(--gold);margin-bottom:6px;">Quick Contact</h4>
+      <p style="color:rgba(255,255,255,0.75);margin:6px 0;">Email: <a href="mailto:youremail@example.com" style="color:var(--gold);text-decoration:none;">youremail@example.com</a></p>
+      <p style="color:rgba(255,255,255,0.75);margin:6px 0;">Telegram: <a target="_blank" href="https://t.me/BullBrainTradingHub" style="color:var(--gold);text-decoration:none;">@BullBrainTradingHub</a></p>
+      <p style="color:rgba(255,255,255,0.6);font-size:13px;margin-top:12px;">We reply within 24–48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    status.style.display = 'block';
+    status.style.color = 'var(--text)';
+    status.textContent = 'Sending message...';
+
+    const data = new FormData(form);
+    if(!data.get('_replyto')) data.set('_replyto', data.get('email'));
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    }).then(response => {
+      if (response.ok) {
+        status.style.color = '#00ff7f';
+        status.textContent = '✅ Thanks! Your message has been sent.';
+        form.reset();
+      } else {
+        response.json().then(data => {
+          status.style.color = '#ff6b6b';
+          status.textContent = (data && data.error) ? data.error : 'Oops — there was a problem. Try again.';
+        });
+      }
+    }).catch(err => {
+      status.style.color = '#ff6b6b';
+      status.textContent = 'Network error — please try again later.';
+    });
+  });
+});
+</script>
+
 
 <footer>
 © <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved
