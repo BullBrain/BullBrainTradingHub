@@ -351,6 +351,49 @@ function toggleMenu(){
 function comingSoon(){ alert("🚧 WhatsApp support coming soon! Stay tuned."); }
 document.getElementById("year").textContent=new Date().getFullYear();
 </script>
+  <script>
+/* ✅ Real-Time Market Data for Locked Layout (Finnhub API) */
+const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
+
+/* Correct symbols for Indian indices */
+const markets = {
+  nifty: "%5ENSEI",
+  banknifty: "%5ENSEBANK",
+  sensex: "%5EBSESN"
+};
+
+async function fetchMarketData(symbol, id) {
+  try {
+    const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`);
+    const data = await res.json();
+    const el = document.getElementById(id);
+    if (!el || !data.c) return;
+
+    const price = data.c.toFixed(2);
+    const change = data.d.toFixed(2);
+    const percent = data.dp.toFixed(2);
+    const isUp = data.d >= 0;
+
+    el.innerHTML = `
+      ${price} 
+      <span style="color:${isUp ? '#00ff7f' : '#ff4d4d'};font-weight:bold;">
+        ${isUp ? '▲' : '▼'} ${Math.abs(change)} (${Math.abs(percent)}%)
+      </span>`;
+  } catch (err) {
+    console.error("Error fetching:", symbol, err);
+  }
+}
+
+function refreshAll() {
+  fetchMarketData(markets.nifty, "nifty");
+  fetchMarketData(markets.banknifty, "banknifty");
+  fetchMarketData(markets.sensex, "sensex");
+}
+
+refreshAll();
+setInterval(refreshAll, 15000); // refresh every 15 seconds
+</script>
+
 
 </body>
 </html>
