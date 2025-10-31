@@ -191,24 +191,60 @@ footer{
 </section>
 
 <!-- ✅ Live Market Section -->
-<div class="market-box-container">
-  <div class="tradingview-widget-container" style="height:40px; overflow:hidden;">
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+<h2 class="section-title" id="live">Live Market</h2>
+<div class="market-box-container" style="justify-content:center; flex-wrap:wrap; gap:15px;">
+  <!-- Nifty -->
+  <div class="tradingview-widget-container" style="width:220px; height:110px;">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
     {
-      "symbols": [
-        { "proName": "INDEX:NIFTY50", "title": "Nifty 50" },
-        { "proName": "NSE:BANKNIFTY", "title": "Bank Nifty" },
-        { "proName": "BSE:SENSEX", "title": "Sensex" }
-      ],
-      "showSymbolLogo": true,
+      "symbol": "INDEX:NIFTY50",
+      "width": "220",
+      "height": "110",
+      "locale": "en",
+      "dateRange": "1D",
       "colorTheme": "dark",
-      "isTransparent": true,
-      "displayMode": "adaptive",
-      "locale": "en"
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>
+
+  <!-- Bank Nifty -->
+  <div class="tradingview-widget-container" style="width:220px; height:110px;">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "NSE:BANKNIFTY",
+      "width": "220",
+      "height": "110",
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "dark",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
+    }
+    </script>
+  </div>
+
+  <!-- Sensex -->
+  <div class="tradingview-widget-container" style="width:220px; height:110px;">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+    {
+      "symbol": "BSE:SENSEX",
+      "width": "220",
+      "height": "110",
+      "locale": "en",
+      "dateRange": "1D",
+      "colorTheme": "dark",
+      "isTransparent": false,
+      "autosize": false,
+      "largeChartUrl": ""
     }
     </script>
   </div>
 </div>
+
 
 
 <h2 class="section-title" id="services">Our Services</h2>
