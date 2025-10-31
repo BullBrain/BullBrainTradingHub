@@ -308,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function(){
     status.textContent = 'Sending message...';
 
     const data = new FormData(form);
+    data.set('_formspreeKey', 'formspree_key_AbCdEfGh123456');
     if(!data.get('_replyto')) data.set('_replyto', data.get('email'));
 
     fetch(form.action, {
