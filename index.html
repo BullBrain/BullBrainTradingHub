@@ -190,14 +190,14 @@ footer{
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- ✅ LIVE MARKET SECTION (Finnhub Fixed, same design & placement) -->
+<!-- ✅ LIVE MARKET SECTION (Locked Design + Live Finnhub Data) -->
 <div class="market-box-container">
   <div class="market-box">
     <div class="market-title">NIFTY 50</div>
     <div id="nifty" class="market-price">--</div>
   </div>
   <div class="market-box">
-    <div class="market-title">BANK NIFTY</div>
+    <div class="market-title">BANKNIFTY</div>
     <div id="banknifty" class="market-price">--</div>
   </div>
   <div class="market-box">
@@ -207,60 +207,48 @@ footer{
 </div>
 
 <script>
-<!-- ✅ LIVE MARKET SECTION (Centered + Finnhub working) -->
-<div class="market-box-container" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:15px;margin:15px 0;">
-  <div class="market-box" style="width:120px;background:#111;text-align:center;padding:10px;border-radius:8px;border:1px solid rgba(255,221,85,0.25);">
-    <div class="market-title" style="color:#ffdd55;font-size:13px;font-weight:bold;">NIFTY 50</div>
-    <div id="nifty" class="market-price" style="font-size:14px;margin-top:3px;">--</div>
-  </div>
-  <div class="market-box" style="width:120px;background:#111;text-align:center;padding:10px;border-radius:8px;border:1px solid rgba(255,221,85,0.25);">
-    <div class="market-title" style="color:#ffdd55;font-size:13px;font-weight:bold;">BANK NIFTY</div>
-    <div id="banknifty" class="market-price" style="font-size:14px;margin-top:3px;">--</div>
-  </div>
-  <div class="market-box" style="width:120px;background:#111;text-align:center;padding:10px;border-radius:8px;border:1px solid rgba(255,221,85,0.25);">
-    <div class="market-title" style="color:#ffdd55;font-size:13px;font-weight:bold;">SENSEX</div>
-    <div id="sensex" class="market-price" style="font-size:14px;margin-top:3px;">--</div>
-  </div>
-</div>
-
-<script>
-/* ✅ Finnhub Live Market Data */
+/* ✅ Live Market Data (Finnhub API) */
 const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
 
-const symbols = {
+const marketSymbols = {
   nifty: "%5ENSEI",        // Nifty 50
   banknifty: "%5ENSEBANK", // Bank Nifty
   sensex: "%5EBSESN"       // Sensex
 };
 
-async function fetchData(symbol, elementId) {
+async function updateMarketData(symbol, elementId) {
   try {
-    const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`);
-    const data = await res.json();
+    const response = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`);
+    const data = await response.json();
     const el = document.getElementById(elementId);
-    if (!data || !el || !data.c) return;
+
+    if (!data || !data.c || !el) return;
 
     const price = data.c;
     const change = data.d;
     const percent = data.dp;
-    const up = change >= 0;
-    const arrow = up ? "▲" : "▼";
-    const color = up ? "#00ff7f" : "#ff4d4d";
+    const isUp = change >= 0;
+    const arrow = isUp ? "▲" : "▼";
+    const color = isUp ? "#00ff7f" : "#ff4d4d";
 
-    el.innerHTML = `${price.toFixed(2)} <span style="color:${color};font-weight:bold;">${arrow} ${change.toFixed(2)} (${percent.toFixed(2)}%)</span>`;
-  } catch (e) {
-    console.error("Error fetching data:", symbol, e);
+    el.innerHTML = `
+      ${price.toFixed(2)} 
+      <span style="color:${color};font-weight:bold;">
+        ${arrow} ${Math.abs(change).toFixed(2)} (${Math.abs(percent).toFixed(2)}%)
+      </span>`;
+  } catch (error) {
+    console.error("Error fetching", symbol, error);
   }
 }
 
-function updateMarket() {
-  fetchData(symbols.nifty, "nifty");
-  fetchData(symbols.banknifty, "banknifty");
-  fetchData(symbols.sensex, "sensex");
+function refreshMarket() {
+  updateMarketData(marketSymbols.nifty, "nifty");
+  updateMarketData(marketSymbols.banknifty, "banknifty");
+  updateMarketData(marketSymbols.sensex, "sensex");
 }
 
-updateMarket();
-setInterval(updateMarket, 15000); // updates every 15 sec
+refreshMarket();
+setInterval(refreshMarket, 15000); // updates every 15 seconds
 </script>
 
 
