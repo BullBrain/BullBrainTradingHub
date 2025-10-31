@@ -101,119 +101,22 @@ nav ul li a{text-decoration:none;color:white;font-weight:bold;font-size:15px;}
   text-shadow:0 0 18px rgba(255,221,85,0.5);
 }
 
-/* ✅ LIVE MARKET */
-.market-box-container{
-  display:flex;justify-content:center;
-  flex-wrap:wrap;gap:12px;margin:18px 0;
-}
-.market-box{
-  width:120px;background:#111;
-  padding:10px;border-radius:10px;
-  border:1px solid rgba(255,221,85,0.25);
-  text-align:center;
-}
-.market-title{font-size:13px;color:var(--gold);font-weight:bold;}
-.market-price{font-size:14px;margin-top:4px;}
-.up{color:#00ff7f;}
-.down{color:#ff4d4d;}
-
-/* SECTIONS */
-.section-title{
-  text-align:center;font-size:26px;
-  color:var(--gold);margin:50px 0 25px;
-}
-.services{
-  display:flex;flex-wrap:wrap;
-  justify-content:center;gap:20px;
-}
-.service-card{
-  width:220px;background:var(--panel);
-  padding:18px;border-radius:var(--radius);
-  border:1px solid rgba(255,221,85,0.25);
-  text-align:center;
-}
-.service-card p{color:var(--text);font-size:16px;}
-
-/* PLANS */
-.plans-container{
-  width:90%;margin:auto;
-  display:flex;flex-wrap:wrap;
-  justify-content:center;gap:18px;
-}
-.plan{
-  width:260px;padding:18px;
-  background:rgba(255,221,85,0.08);
-  border-radius:var(--radius);
-  border:2px solid rgba(255,221,85,0.25);
-}
-.plan ul{list-style:disc;padding-left:20px;margin-top:10px;}
-.plan h3{color:var(--gold);font-size:20px;}
-
-.btn{
-  display:block;margin-top:12px;
-  background:var(--gold);
-  color:black;font-weight:bold;
-  padding:10px;text-align:center;
-  border-radius:var(--radius);
-}
-
-/* Social */
-.social-icons{
-  display:flex;justify-content:center;
-  gap:25px;margin-top:20px;
-}
-.social-icons img{
-  width:40px;transition:0.3s;
-}
-.social-icons img:hover{transform:scale(1.15);}
-
-/* FOOTER */
-footer{
-  text-align:center;padding:18px;
-  background:#000;margin-top:60px;
-  color:rgba(255,255,255,0.6);
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo-container">
-    <img src="logo.png">
-    <span>Bull & Brain</span>
-  </div>
-
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
-
-  <div id="mobileMenu">
-    <a href="#services">SERVICES</a>
-    <a href="#membership">MEMBERSHIP</a>
-    <a href="#join">JOIN</a>
-    <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
-  </div>
-
-  <nav>
-  <ul>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#membership">Membership</a></li>
-    <li><a href="#join">Join</a></li>
-    <li><a target="_blank" href="https://t.me/BullBrainTradingHub">Telegram</a></li>
-  </ul>
-  </nav>
-</header>
-
-<section class="hero">
-  <img src="logo.png" class="main-logo">
-  <img src="logo.png" class="bg-logo">
-  <h1>Where Logic Meets Profits</h1>
-</section>
-
+<!-- ✅ Live Market Section -->
 <div class="market-box-container">
-  <div class="market-box"><div class="market-title">NIFTY 50</div><div id="nifty" class="market-price">--</div></div>
-  <div class="market-box"><div class="market-title">BANKNIFTY</div><div id="banknifty" class="market-price">--</div></div>
-  <div class="market-box"><div class="market-title">SENSEX</div><div id="sensex" class="market-price">--</div></div>
+  <div class="market-box">
+    <div class="market-title">NIFTY 50</div>
+    <div id="nifty" class="market-price">--</div>
+  </div>
+  <div class="market-box">
+    <div class="market-title">BANKNIFTY</div>
+    <div id="banknifty" class="market-price">--</div>
+  </div>
+  <div class="market-box">
+    <div class="market-title">SENSEX</div>
+    <div id="sensex" class="market-price">--</div>
+  </div>
 </div>
+
 
 <h2 class="section-title" id="services">Our Services</h2>
 <div class="services">
