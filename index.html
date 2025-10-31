@@ -32,7 +32,7 @@ header{
 nav ul{list-style:none;display:flex;gap:18px;}
 nav ul li a{text-decoration:none;color:white;font-weight:bold;font-size:15px;}
 
-/* ✅ Hamburger FIXED TOP RIGHT */
+/* ✅ Hamburger fixed top right */
 .hamburger{
   display:none;
   position:absolute;
@@ -45,7 +45,7 @@ nav ul li a{text-decoration:none;color:white;font-weight:bold;font-size:15px;}
   z-index:3000;
 }
 
-/* ✅ Mobile Menu */
+/* Mobile Menu */
 #mobileMenu{
   display:none;
   position:absolute;
@@ -77,13 +77,10 @@ nav ul li a{text-decoration:none;color:white;font-weight:bold;font-size:15px;}
   text-align:center;padding:70px 20px 35px;
   position:relative;overflow:hidden;
 }
-.hero img.main-logo {
-  width:170px;
-  position:relative;
-  z-index:5;
-  filter: drop-shadow(0 0 22px rgba(255,221,85,0.75)); /* ✅ Added premium glow */
+.hero img.main-logo{
+  width:170px;position:relative;z-index:5;
+  filter: drop-shadow(0 0 22px rgba(255,221,85,0.75)); /* glow */
 }
-
 .hero img.bg-logo{
   width:500px;
   position:absolute;
@@ -101,22 +98,117 @@ nav ul li a{text-decoration:none;color:white;font-weight:bold;font-size:15px;}
   text-shadow:0 0 18px rgba(255,221,85,0.5);
 }
 
-<!-- ✅ Live Market Section -->
-<div class="market-box-container">
-  <div class="market-box">
-    <div class="market-title">NIFTY 50</div>
-    <div id="nifty" class="market-price">--</div>
+/* SECTIONS */
+.section-title{
+  text-align:center;font-size:26px;
+  color:var(--gold);margin:50px 0 25px;
+}
+.services{
+  display:flex;flex-wrap:wrap;
+  justify-content:center;gap:20px;
+}
+.service-card{
+  width:220px;background:var(--panel);
+  padding:18px;border-radius:var(--radius);
+  border:1px solid rgba(255,221,85,0.25);
+  text-align:center;
+}
+.service-card p{color:var(--text);font-size:16px;}
+
+/* PLANS */
+.plans-container{
+  width:90%;margin:auto;
+  display:flex;flex-wrap:wrap;
+  justify-content:center;gap:18px;
+}
+.plan{
+  width:260px;padding:18px;
+  background:rgba(255,221,85,0.08);
+  border-radius:var(--radius);
+  border:2px solid rgba(255,221,85,0.25);
+}
+.plan ul{list-style:disc;padding-left:20px;margin-top:10px;}
+.plan h3{color:var(--gold);font-size:20px;}
+
+.btn{
+  display:block;margin-top:12px;
+  background:var(--gold);
+  color:black;font-weight:bold;
+  padding:10px;text-align:center;
+  border-radius:var(--radius);
+}
+
+/* Social */
+.social-icons{
+  display:flex;justify-content:center;
+  gap:25px;margin-top:20px;
+}
+.social-icons img{
+  width:40px;transition:0.3s;
+}
+.social-icons img:hover{transform:scale(1.15);}
+
+/* FOOTER */
+footer{
+  text-align:center;padding:18px;
+  background:#000;margin-top:60px;
+  color:rgba(255,255,255,0.6);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logo.png">
+    <span>Bull & Brain</span>
   </div>
-  <div class="market-box">
-    <div class="market-title">BANKNIFTY</div>
-    <div id="banknifty" class="market-price">--</div>
+
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+  <div id="mobileMenu">
+    <a href="#services">SERVICES</a>
+    <a href="#membership">MEMBERSHIP</a>
+    <a href="#join">JOIN</a>
+    <a href="https://t.me/BullBrainTradingHub" target="_blank">TELEGRAM</a>
   </div>
-  <div class="market-box">
-    <div class="market-title">SENSEX</div>
-    <div id="sensex" class="market-price">--</div>
+
+  <nav>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#membership">Membership</a></li>
+    <li><a href="#join">Join</a></li>
+    <li><a target="_blank" href="https://t.me/BullBrainTradingHub">Telegram</a></li>
+  </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="logo.png" class="main-logo">
+  <img src="logo.png" class="bg-logo">
+  <h1>Where Logic Meets Profits</h1>
+</section>
+
+<!-- ✅ LIVE MARKET (TradingView Ticker Widget) -->
+<h2 class="section-title" id="live">Live Market</h2>
+<div style="max-width:100%; overflow:hidden; padding:10px 0;">
+  <div class="tradingview-widget-container" style="height:60px;">
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        { "proName": "NSE:NIFTY", "title": "NIFTY 50" },
+        { "proName": "NSE:BANKNIFTY", "title": "BANK NIFTY" },
+        { "proName": "BSE:SENSEX", "title": "SENSEX" }
+      ],
+      "colorTheme": "dark",
+      "isTransparent": false,
+      "displayMode": "regular",
+      "locale": "en"
+    }
+    </script>
   </div>
 </div>
-
 
 <h2 class="section-title" id="services">Our Services</h2>
 <div class="services">
@@ -168,39 +260,7 @@ nav ul li a{text-decoration:none;color:white;font-weight:bold;font-size:15px;}
   </a>
 </div>
 
-<footer>
-© <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved
-</footer>
-
-<script>
-// Live data
-const API_KEY="d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
-function update(sym,id){
-  fetch(`https://finnhub.io/api/v1/quote?symbol=${sym}&token=${API_KEY}`)
-  .then(r=>r.json()).then(d=>{
-    const el=document.getElementById(id);
-    if(!d.c) return;
-    const c=d.d>=0 ? "up":"down";
-    const a=d.d>=0 ? "▲":"+";
-    el.innerHTML=`${d.c.toFixed(2)} <span class="${c}">${a}${d.d.toFixed(2)} (${d.dp.toFixed(2)}%)</span>`;
-  });
-}
-function refresh(){
-  update("NSE:NIFTY_50","nifty");
-  update("NSE:BANKNIFTY","banknifty");
-  update("BSE:SENSEX","sensex");
-}
-setInterval(refresh,7000);refresh();
-
-// Mobile Menu
-function toggleMenu(){
-  const m=document.getElementById("mobileMenu");
-  m.style.display=m.style.display==="block"?"none":"block";
-}
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
-  
-  <!-- ✅ Floating Contact Buttons -->
+<!-- ✅ Floating Contact Buttons -->
 <style>
 .floating-buttons {
   position: fixed;
@@ -211,56 +271,44 @@ document.getElementById("year").textContent=new Date().getFullYear();
   gap: 12px;
   z-index: 9999;
 }
-
-.floating-buttons a, 
-.floating-buttons button {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #25D366; /* WhatsApp green */
+.floating-buttons a, .floating-buttons button {
+  width: 55px; height: 55px;
+  border-radius: 50%; border: none;
+  display: flex; align-items: center; justify-content: center;
+  background: #25D366; cursor: pointer;
   box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  cursor: pointer;
   transition: transform 0.25s ease;
 }
-
-.floating-buttons a img,
-.floating-buttons button img {
-  width: 32px;
-  height: 32px;
+.floating-buttons a img, .floating-buttons button img {
+  width: 32px; height: 32px;
 }
-
-.floating-buttons a:hover,
-.floating-buttons button:hover {
+.floating-buttons a:hover, .floating-buttons button:hover {
   transform: scale(1.1);
 }
-
-.floating-buttons .telegram {
-  background: #0088cc; /* Telegram blue */
-}
+.floating-buttons .telegram { background:#0088cc; }
 </style>
 
 <div class="floating-buttons">
-  <!-- WhatsApp -->
   <button onclick="comingSoon()">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
   </button>
-
-  <!-- Telegram -->
   <a href="https://t.me/BullBrainTradingHub" target="_blank" class="telegram">
     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram">
   </a>
 </div>
 
-<script>
-function comingSoon() {
-  alert("🚧 WhatsApp support coming soon! Stay tuned.");
-}
-</script>
+<footer>
+© <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved
+</footer>
 
+<script>
+function toggleMenu(){
+  const m=document.getElementById("mobileMenu");
+  m.style.display=m.style.display==="block"?"none":"block";
+}
+function comingSoon(){ alert("🚧 WhatsApp support coming soon! Stay tuned."); }
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 
 </body>
 </html>
