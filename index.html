@@ -190,60 +190,54 @@ footer{
   <h1>Where Logic Meets Profits</h1>
 </section>
 
-<!-- ✅ Live Market Section -->
-<h2 class="section-title" id="live">Live Market</h2>
-<div class="market-box-container" style="justify-content:center; flex-wrap:wrap; gap:15px;">
-  <!-- Nifty -->
-  <div class="tradingview-widget-container" style="width:220px; height:110px;">
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-    {
-      "symbol": "INDEX:NIFTY50",
-      "width": "220",
-      "height": "110",
-      "locale": "en",
-      "dateRange": "1D",
-      "colorTheme": "dark",
-      "isTransparent": false,
-      "autosize": false,
-      "largeChartUrl": ""
-    }
-    </script>
+<!-- ✅ LIVE MARKET SECTION (updated with Finnhub working symbols) -->
+<div class="market-box-container">
+  <div class="market-box">
+    <div class="market-title">NIFTY 50</div>
+    <div id="nifty" class="market-price">--</div>
   </div>
-
-  <!-- Bank Nifty -->
-  <div class="tradingview-widget-container" style="width:220px; height:110px;">
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-    {
-      "symbol": "NSE:BANKNIFTY",
-      "width": "220",
-      "height": "110",
-      "locale": "en",
-      "dateRange": "1D",
-      "colorTheme": "dark",
-      "isTransparent": false,
-      "autosize": false,
-      "largeChartUrl": ""
-    }
-    </script>
+  <div class="market-box">
+    <div class="market-title">BANK NIFTY</div>
+    <div id="banknifty" class="market-price">--</div>
   </div>
-
-  <!-- Sensex -->
-  <div class="tradingview-widget-container" style="width:220px; height:110px;">
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-    {
-      "symbol": "BSE:SENSEX",
-      "width": "220",
-      "height": "110",
-      "locale": "en",
-      "dateRange": "1D",
-      "colorTheme": "dark",
-      "isTransparent": false,
-      "autosize": false,
-      "largeChartUrl": ""
-    }
-    </script>
+  <div class="market-box">
+    <div class="market-title">SENSEX</div>
+    <div id="sensex" class="market-price">--</div>
   </div>
 </div>
+
+<script>
+/* ✅  Finnhub Live Market Data  */
+const API_KEY = "d40umbhr01qhkm8b0060d40umbhr01qhkm8b006g";
+
+async function fetchQuote(symbol, elementId) {
+  try {
+    const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${API_KEY}`);
+    const data = await res.json();
+    const el = document.getElementById(elementId);
+    if (!el || !data.c) return;
+
+    const price = data.c;
+    const change = data.d;
+    const percent = data.dp;
+    const sign = change >= 0 ? '+' : '';
+    const color = change >= 0 ? 'up' : 'down';
+    const arrow = change >= 0 ? '▲' : '▼';
+
+    el.innerHTML = `${price.toFixed(2)} <span class="${color}">${arrow} ${sign}${change.toFixed(2)} (${sign}${percent.toFixed(2)}%)</span>`;
+  } catch (e) {
+    console.error(symbol, e);
+  }
+}
+
+function updateMarket() {
+  fetchQuote("^NSEI", "nifty");      // Nifty 50
+  fetchQuote("^NSEBANK", "banknifty"); // Bank Nifty
+  fetchQuote("^BSESN", "sensex");    // Sensex
+}
+updateMarket();
+setInterval(updateMarket, 15000); // refresh every 15 s
+</script>
 
 
 
