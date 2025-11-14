@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bull & Brain Trading Hub</title>
+  <!-- ✅ AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 <style>
 :root {
@@ -178,7 +181,7 @@ footer{
 
 <body>
 
-<header>
+<header data-aos="fade-down">
   <div class="logo-container">
     <img src="logo.png">
     <span>Bull & Brain</span>
@@ -203,29 +206,29 @@ footer{
   </nav>
 </header>
 
-<section class="hero">
-  <img src="logo.png" class="main-logo">
-  <img src="logo.png" class="bg-logo">
-  <h1>Where Logic Meets Profits</h1>
+<section class="hero" data-aos="zoom-in">
+  <img src="logo.png" class="main-logo" data-aos="zoom-in" data-aos-delay="150">
+  <img src="logo.png" class="bg-logo" data-aos="fade-in" data-aos-delay="300">
+  <h1 data-aos="fade-up" data-aos-delay="350">Where Logic Meets Profits</h1>
 </section>
 
-<div class="market-box-container">
+<div class="market-box-container" data-aos="fade-up" data-aos-delay="200">
   <div class="market-box"><div class="market-title">NIFTY 50</div><div id="nifty" class="market-price">--</div></div>
   <div class="market-box"><div class="market-title">BANKNIFTY</div><div id="banknifty" class="market-price">--</div></div>
   <div class="market-box"><div class="market-title">SENSEX</div><div id="sensex" class="market-price">--</div></div>
 </div>
 
-<h2 class="section-title" id="services">Our Services</h2>
+<h2 class="section-title" id="services" data-aos="fade-up">Our Services</h2>
 <div class="services">
-  <div class="service-card"><p>📈 Live Market Calls</p></div>
-  <div class="service-card"><p>📊 Market Analysis</p></div>
-  <div class="service-card"><p>🤝 Support</p></div>
-  <div class="service-card"><p>👥 Community Access</p></div>
+  <div class="service-card" data-aos="fade-up" data-aos-delay="100"><p>📈 Live Market Calls</p></div>
+  <div class="service-card" data-aos="fade-up" data-aos-delay="200"><p>📊 Market Analysis</p></div>
+  <div class="service-card" data-aos="fade-up" data-aos-delay="300"><p>🤝 Support</p></div>
+  <div class="service-card" data-aos="fade-up" data-aos-delay="400"><p>👥 Community Access</p></div>
 </div>
 
-<h2 class="section-title" id="membership">Membership Plans</h2>
+<h2 class="section-title" id="membership" data-aos="fade-up">Membership Plans</h2>
 <div class="plans-container">
-  <div class="plan">
+  <div class="plan" data-aos="fade-right" data-aos-delay="100">
     <h3>Basic Plan</h3>
     <ul>
       <li>Free Telegram Group</li>
@@ -236,7 +239,7 @@ footer{
     <a class="btn" href="https://t.me/BullBrainTradingHub" target="_blank">Join Free Now</a>
   </div>
 
-  <div class="plan">
+  <div class="plan" data-aos="fade-up" data-aos-delay="200">
     <h3>Standard Plan (Coming Soon)</h3>
     <ul>
       <li>Premium Group Access</li>
@@ -246,7 +249,7 @@ footer{
     </ul>
   </div>
 
-  <div class="plan">
+  <div class="plan" data-aos="fade-left" data-aos-delay="300">
     <h3>Premium Plan (Coming Soon)</h3>
     <ul>
       <li>Private Coaching</li>
@@ -258,8 +261,8 @@ footer{
   </div>
 </div>
 
-<h2 class="section-title" id="join">Join Our Community</h2>
-<div class="social-icons">
+<h2 class="section-title" id="join" data-aos="fade-up">Join Our Community</h2>
+<div class="social-icons" data-aos="zoom-in" data-aos-delay="150">
   <a href="https://www.instagram.com/bull.braintrader?igsh=OTA1Z2poOGVlNzMx" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
   </a>
@@ -334,7 +337,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 
-<footer>
+<footer data-aos="fade-up" data-aos-delay="200">
 © <span id="year"></span> Bull & Brain Trading Hub — All Rights Reserved
 </footer>
 
@@ -408,7 +411,7 @@ document.getElementById("year").textContent=new Date().getFullYear();
 }
 </style>
 
-<div class="floating-buttons">
+<div class="floating-buttons" data-aos="fade-left" data-aos-delay="200">
   <!-- WhatsApp -->
   <button onclick="comingSoon()">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
@@ -426,6 +429,12 @@ function comingSoon() {
 }
 </script>
 
-
+<script>
+AOS.init({
+  duration: 900,     // smooth premium animations
+  easing: 'ease-in-out',
+  once: true         // animation runs only once
+});
+</script>
 </body>
 </html>
