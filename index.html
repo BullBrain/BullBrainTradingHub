@@ -217,51 +217,70 @@ footer{
   <h1 data-aos="fade-up" data-aos-delay="350">Where Logic Meets Profits</h1>
 </section>
 
-<!-- Premium Glassmorphic Live Market Ticker -->
+<!-- ULTRA PREMIUM MARKET TICKER -->
 <style>
-  .premium-ticker-box {
+  .ultra-premium-ticker {
     width: 100%;
-    padding: 12px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 25px rgba(255, 165, 0, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    margin: 25px 0;
+    padding: 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+      0 0 25px rgba(255, 215, 0, 0.25),
+      inset 0 0 12px rgba(255, 255, 255, 0.05);
+    margin: 28px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* GOLDEN SHINE EFFECT */
+  .ultra-premium-ticker::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 200, 0, 0.18),
+      transparent 70%
+    );
+    animation: shineMove 8s linear infinite;
+  }
+
+  @keyframes shineMove {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(25%,25%); }
+    100% { transform: translate(0,0); }
+  }
+
+  /* SOFT OUTER NEON */
+  .ultra-premium-ticker::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);
+    pointer-events: none;
   }
 </style>
 
-<div class="premium-ticker-box">
+<div class="ultra-premium-ticker">
   <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
 
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    <script type="text/javascript" 
+            src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
     {
       "symbols": [
-        {
-          "proName": "BINANCE:BTCUSDT",
-          "title": "Bitcoin"
-        },
-        {
-          "proName": "BINANCE:ETHUSDT",
-          "title": "Ethereum"
-        },
-        {
-          "proName": "FOREXCOM:NSXUSD",
-          "title": "US 100"
-        },
-        {
-          "proName": "FOREXCOM:SPXUSD",
-          "title": "S&P 500"
-        },
-        {
-         "proName": "FOREXCOM:XAUUSD",
-        "title": "Gold"
-      },
-      {
-        "proName": "FOREXCOM:XAGUSD",
-        "title": "Silver"
-        }
+        { "proName": "BINANCE:BTCUSDT", "title": "Bitcoin" },
+        { "proName": "BINANCE:ETHUSDT", "title": "Ethereum" },
+        { "proName": "FOREXCOM:NSXUSD", "title": "US 100" },
+        { "proName": "FOREXCOM:SPXUSD", "title": "S&P 500" },
+        { "proName": "FOREXCOM:XAUUSD", "title": "Gold" },
+        { "proName": "FOREXCOM:XAGUSD", "title": "Silver" }
       ],
       "showSymbolLogo": true,
       "isTransparent": true,
@@ -272,9 +291,6 @@ footer{
     </script>
   </div>
 </div>
-
-
-
 
 <!-- ⭐ PREMIUM SERVICES SECTION ⭐ -->
 <section id="services" style="padding:50px 18px; text-align:center;">
