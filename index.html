@@ -301,127 +301,81 @@ footer{
   </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  const form = document.getElementById('contactForm');
-  const status = document.getElementById('formStatus');
+  <!-- Why Traders Trust Us Section -->
+<section style="padding: 60px 20px; background: #0d0d0d; text-align: center;">
+    <h2 style="color: #e6b800; font-size: 32px; margin-bottom: 10px;" data-aos="fade-up">
+        Why Traders Trust Us
+    </h2>
+    <p style="color: #cfcfcf; font-size: 15px; margin-bottom: 40px;" data-aos="fade-up" data-aos-delay="100">
+        Trusted by thousands for accurate analysis, transparency and professional guidance.
+    </p>
 
-  form.addEventListener('submit', function(ev){
-    ev.preventDefault();
-    status.style.display = 'block';
-    status.style.color = 'var(--text)';
-    status.textContent = 'Sending message...';
+    <div class="trust-grid" style="
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        margin: auto;
+    ">
+        <!-- Card 1 -->
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="150" style="
+            background: #141414;
+            padding: 20px;
+            border: 1px solid #e6b800;
+            border-radius: 10px;
+        ">
+            <div style="font-size: 30px; color: #e6b800;">🔒</div>
+            <h3 style="color: #e6b800; margin: 10px 0 5px;">Secure & Safe</h3>
+            <p style="color: #cfcfcf; font-size: 14px;">Clean & SEBI-friendly analysis only.</p>
+        </div>
 
-    const data = new FormData(form);
-    if(!data.get('_replyto')) data.set('_replyto', data.get('email'));
+        <!-- Card 2 -->
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="250" style="
+            background: #141414;
+            padding: 20px;
+            border: 1px solid #e6b800;
+            border-radius: 10px;
+        ">
+            <div style="font-size: 30px; color: #e6b800;">⚡</div>
+            <h3 style="color: #e6b800; margin: 10px 0 5px;">Accurate Calls</h3>
+            <p style="color: #cfcfcf; font-size: 14px;">High-precision market insights.</p>
+        </div>
 
-    fetch(form.action, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
-    }).then(response => {
-      if (response.ok) {
-        status.style.color = '#00ff7f';
-        status.textContent = '✅ Thanks! Your message has been sent.';
-        form.reset();
-      } else {
-        response.json().then(data => {
-          status.style.color = '#ff6b6b';
-          status.textContent = (data && data.error) ? data.error : 'Oops — there was a problem. Try again.';
-        });
-      }
-    }).catch(err => {
-      status.style.color = '#ff6b6b';
-      status.textContent = 'Network error — please try again later.';
-    });
-  });
-});
-</script>
+        <!-- Card 3 -->
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="350" style="
+            background: #141414;
+            padding: 20px;
+            border: 1px solid #e6b800;
+            border-radius: 10px;
+        ">
+            <div style="font-size: 30px; color: #e6b800;">💬</div>
+            <h3 style="color: #e6b800; margin: 10px 0 5px;">Fast Support</h3>
+            <p style="color: #cfcfcf; font-size: 14px;">Replies within minutes.</p>
+        </div>
 
-  <!-- ================= TRUST & SAFETY SECTION ================= -->
-<section style="padding:40px 18px; margin-top:40px; max-width:1100px; margin-left:auto; margin-right:auto;">
-  <h2 class="section-title" data-aos="fade-up">Trust & Safety Guaranteed</h2>
-
-  <div style="display:flex; flex-wrap:wrap; gap:18px; justify-content:center; margin-top:20px;">
-
-    <!-- Badge 1 -->
-    <div data-aos="fade-up" data-aos-delay="100" 
-      style="background:rgba(255,221,85,0.08); padding:20px; width:240px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.25); text-align:center;">
-      <img src="https://cdn-icons-png.flaticon.com/512/545/545682.png" style="width:52px; opacity:0.85;">
-      <h3 style="color:var(--gold); margin-top:10px;">Secure Platform</h3>
-      <p style="color:var(--text); font-size:14px; margin-top:6px;">We follow strict privacy & safety standards.</p>
+        <!-- Card 4 -->
+        <div class="trust-card" data-aos="fade-up" data-aos-delay="450" style="
+            background: #141414;
+            padding: 20px;
+            border: 1px solid #e6b800;
+            border-radius: 10px;
+        ">
+            <div style="font-size: 30px; color: #e6b800;">✔️</div>
+            <h3 style="color: #e6b800; margin: 10px 0 5px;">Verified Results</h3>
+            <p style="color: #cfcfcf; font-size: 14px;">Real profits & proof shared daily.</p>
+        </div>
     </div>
 
-    <!-- Badge 2 -->
-    <div data-aos="fade-up" data-aos-delay="200" 
-      style="background:rgba(255,221,85,0.08); padding:20px; width:240px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.25); text-align:center;">
-      <img src="https://cdn-icons-png.flaticon.com/512/545/545674.png" style="width:52px; opacity:0.85;">
-      <h3 style="color:var(--gold); margin-top:10px;">Transparent Services</h3>
-      <p style="color:var(--text); font-size:14px; margin-top:6px;">No hidden fees, no misleading claims.</p>
-    </div>
-
-    <!-- Badge 3 -->
-    <div data-aos="fade-up" data-aos-delay="300" 
-      style="background:rgba(255,221,85,0.08); padding:20px; width:240px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.25); text-align:center;">
-      <img src="https://cdn-icons-png.flaticon.com/512/2099/2099058.png" style="width:52px; opacity:0.85;">
-      <h3 style="color:var(--gold); margin-top:10px;">Fast Support</h3>
-      <p style="color:var(--text); font-size:14px; margin-top:6px;">Quick replies for all users.</p>
-    </div>
-
-    <!-- Badge 4 -->
-    <div data-aos="fade-up" data-aos-delay="400" 
-      style="background:rgba(255,221,85,0.08); padding:20px; width:240px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.25); text-align:center;">
-      <img src="https://cdn-icons-png.flaticon.com/512/1828/1828653.png" style="width:52px; opacity:0.85;">
-      <h3 style="color:var(--gold); margin-top:10px;">Safe Trading Guidance</h3>
-      <p style="color:var(--text); font-size:14px; margin-top:6px;">We educate users for safe decisions.</p>
-    </div>
-
-  </div>
-</section>
-
-  <!-- ================= WHY CHOOSE US SECTION ================= -->
-<section style="padding:45px 18px; max-width:1100px; margin:40px auto;">
-  <h2 class="section-title" data-aos="fade-up">Why Traders Choose Us</h2>
-
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:22px; margin-top:20px;">
-
-    <!-- CARD 1 -->
-    <div data-aos="fade-right" data-aos-delay="100"
-      style="background:var(--panel); width:300px; padding:22px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.2);">
-      <h3 style="color:var(--gold); font-size:18px; margin-bottom:8px;">Accurate Market Insights</h3>
-      <p style="color:var(--text); font-size:15px;">We analyze the market with logic, discipline & data — no gambling.</p>
-    </div>
-
-    <!-- CARD 2 -->
-    <div data-aos="fade-up" data-aos-delay="200"
-      style="background:var(--panel); width:300px; padding:22px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.2);">
-      <h3 style="color:var(--gold); font-size:18px; margin-bottom:8px;">Beginner-Friendly Guidance</h3>
-      <p style="color:var(--text); font-size:15px;">We help new traders understand patterns, logic & safe trading rules.</p>
-    </div>
-
-    <!-- CARD 3 -->
-    <div data-aos="fade-left" data-aos-delay="300"
-      style="background:var(--panel); width:300px; padding:22px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.2);">
-      <h3 style="color:var(--gold); font-size:18px; margin-bottom:8px;">Premium Community</h3>
-      <p style="color:var(--text); font-size:15px;">Join a fast-growing community of disciplined traders.</p>
-    </div>
-
-    <!-- CARD 4 -->
-    <div data-aos="fade-up" data-aos-delay="400"
-      style="background:var(--panel); width:300px; padding:22px; border-radius:14px;
-             border:1px solid rgba(255,221,85,0.2);">
-      <h3 style="color:var(--gold); font-size:18px; margin-bottom:8px;">Daily Market Learning</h3>
-      <p style="color:var(--text); font-size:15px;">Even if you don’t trade, you learn and improve daily.</p>
-    </div>
-
-  </div>
+    <p style="
+        margin-top: 25px;
+        color: #999;
+        font-size: 13px;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    " data-aos="fade-up" data-aos-delay="550">
+        We share only genuine market analysis — no manipulation, no fake hype, no gambling tips.
+    </p>
 </section>
 
 
