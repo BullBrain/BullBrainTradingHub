@@ -217,45 +217,62 @@ footer{
   <h1 data-aos="fade-up" data-aos-delay="350">Where Logic Meets Profits</h1>
 </section>
 
-<!-- Premium Horizontal Live Market Ticker -->
-<div class="tradingview-widget-container" style="width:100%; margin: 20px 0;">
-  <div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-    "symbols": [
-      {
-        "proName": "BINANCE:BTCUSDT",
-        "title": "Bitcoin"
-      },
-      {
-        "proName": "BINANCE:ETHUSDT",
-        "title": "Ethereum"
-      },
-      {
-        "proName": "FOREXCOM:NSXUSD",
-        "title": "US 100"
-      },
-      {
-        "proName": "FOREXCOM:SPXUSD",
-        "title": "S&P 500"
-      },
-      {
-        "proName": "FOREXCOM:XAUUSD",
-        "title": "Gold"
-      },
-      {
-        "proName": "FOREXCOM:XAGUSD",
-        "title": "Silver"
-      }
-    ],
-    "showSymbolLogo": true,
-    "isTransparent": false,
-    "displayMode": "adaptive",
-    "colorTheme": "dark",
-    "locale": "en"
+<!-- Premium Glassmorphic Live Market Ticker -->
+<style>
+  .premium-ticker-box {
+    width: 100%;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(255, 165, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 25px 0;
   }
-  </script>
+</style>
+
+<div class="premium-ticker-box">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {
+          "proName": "BINANCE:BTCUSDT",
+          "title": "Bitcoin"
+        },
+        {
+          "proName": "BINANCE:ETHUSDT",
+          "title": "Ethereum"
+        },
+        {
+          "proName": "FOREXCOM:NSXUSD",
+          "title": "US 100"
+        },
+        {
+          "proName": "FOREXCOM:SPXUSD",
+          "title": "S&P 500"
+        },
+        {
+          "proName": "MCX:GOLD1!",
+          "title": "Gold (INR)"
+        },
+        {
+          "proName": "MCX:SILVER1!",
+          "title": "Silver (INR)"
+        }
+      ],
+      "showSymbolLogo": true,
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "colorTheme": "dark",
+      "locale": "en"
+    }
+    </script>
+  </div>
 </div>
+
 
 
 
