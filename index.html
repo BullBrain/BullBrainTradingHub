@@ -217,29 +217,46 @@ footer{
   <h1 data-aos="fade-up" data-aos-delay="350">Where Logic Meets Profits</h1>
 </section>
 
-<!-- TradingView Premium Full Chart -->
-<div class="tradingview-widget-container" style="margin-top:20px;">
-  <div id="tradingview_chart"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-  <script type="text/javascript">
-    new TradingView.widget({
-      "width": "100%",
-      "height": 480,
-      "symbol": "NSE:NIFTY_50",
-      "interval": "15",
-      "timezone": "Asia/Kolkata",
-      "theme": "dark",
-      "style": "1",
-      "locale": "en",
-      "toolbar_bg": "#000000",
-      "enable_publishing": false,
-      "hide_top_toolbar": false,
-      "hide_legend": false,
-      "save_image": false,
-      "container_id": "tradingview_chart"
-    });
+<!-- Premium Horizontal Live Market Ticker -->
+<div class="tradingview-widget-container" style="width:100%; margin: 20px 0;">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+    "symbols": [
+      {
+        "proName": "BINANCE:BTCUSDT",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BINANCE:ETHUSDT",
+        "title": "Ethereum"
+      },
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "US 100"
+      },
+      {
+        "proName": "FOREXCOM:SPXUSD",
+        "title": "S&P 500"
+      },
+      {
+        "proName": "FOREXCOM:XAUUSD",
+        "title": "Gold"
+      },
+      {
+        "proName": "FOREXCOM:XAGUSD",
+        "title": "Silver"
+      }
+    ],
+    "showSymbolLogo": true,
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "colorTheme": "dark",
+    "locale": "en"
+  }
   </script>
 </div>
+
 
 
 <!-- ⭐ PREMIUM SERVICES SECTION ⭐ -->
